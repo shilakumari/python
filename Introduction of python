@@ -1,0 +1,310 @@
+SECTION 1: Introduction
+	1. Third-party libraries that can be used in Python
+		pythonanywhere.com/batteries_included
+	2. In Java- Package
+		In Python- Module
+
+
+SECTION 2: Software Setup and First Python
+	1. Python installation
+		google-> https://www.python.org/downloads/
+			(Installed here)C:\Users\Java\AppData\Local\Programs\Python\Python312
+	2. Python IDE
+	google-> pycharm download
+			download community addition
+	3. Comments in python
+		# - For single line.
+		""" or ''' - For multiple lines.
+	4. Python Indentation
+		Python uses indentation(space at the beginning of line) to recognize block of code.
+		Four spaces is the populer indentation.
+
+
+SECTION 3: Datatypes
+	1. Types of Datatypes(5 types) 
+		None Type - An object that doesnot contain any value.
+		Numeric Types - int, float, complex
+		Sequences - str, bytes, bytearray, list, tuple, range
+		Sets - That doesnot allow duplicates
+		Mappings - Used to map and reduce
+	
+		type() - predefined function in python to get type of particular datatype.
+	2. Type conversion Functions
+		int(), float(), oct(), hex(), bin()
+	3. Identifiers
+		In identifiers can have any numbers of alphabets.
+		Python is case sensitive language.
+		can not start with number.
+		can have uderscore(_) at the middle or end of identifiers.
+			If and underscore at the beginning that mean private identifiers.
+				_userID=123
+			__init__ that means "Magic function".
+		can not have any other symbole.
+
+	
+SECTION 4: Sequence Types
+	1. Collection
+		List (maintain order)
+		Set (doesnot allow duplicates)
+		Dictonary(Key, value pair)
+	2. Create String
+		Indexing: Reaching out to particular character or location.
+			print(s1[2])
+		Reputation: When using * operator with string.
+			print(s1*2)
+		len() - to get length of string.
+	3. Slicing a string
+		s1="You are awesome"
+		print(s1[0:5])#doesnot include 5
+		print(s1[0:])#include 0 to last index
+		print(s1[:8])#include 0 to 7
+		print(s1[-3:-1])# - mean index from last
+		Slicing using third value
+		print(s1[0:9:2])#Yuaea
+		print(s1[15::-1])#emosewa era uoY
+		print(s1[::-1])#emosewa era uoY
+	4. String methods
+		To remove space:
+		strip() - remove spaces from beginning as well as end of the string.
+		lstrip() - remove space from the left. 
+		rstrip() - remove spaces from the right.
+			print(s3.find("awe", 0, len(s3)))
+			print(s3.count("a"))
+			print(s3.replace("awesome","super"))
+			print(s3.lower())
+			print(s3.upper())
+			print(s3.title())
+	5. List
+		lst=[10,20,"Bharath",-10,30.5]
+		print(lst)
+		print(lst[3])
+		print(lst[3:5])
+		print(lst*2)
+		print(len(lst))
+
+		#Adding and removing in list
+		lst.append(40)
+		lst.insert(3,46)
+		lst.remove("Bharath")
+		del(lst[2])
+		print(lst)
+	
+		#lst.clear()
+		print(min(lst))
+		print(max(lst))
+		lst.sort(reverse=True)
+		print(lst)
+	6.Tuple
+		Can not be modified (Immutable)
+		Insertion order preserved
+		Duplicates allowed
+		Different types of element allowed.
+			t1=(1,2,3,4) or t1=1,2,3,4
+		for one data: 
+			t3=1,
+		tpl=(20,30,20,"xyz")
+			print(type(tpl))
+			print(tpl*3)
+			print(tpl.count(20))
+			print(tpl.index("xyz"))
+		List to tuple:
+			lst=[10, 20, 30, "Hello"]
+			tpl3=tuple(lst)
+			print(type(tpl3))
+	7. Difference between List and Tuple
+		List:
+			[1,2,3]
+			mutable
+			changing
+			Key to dictionary is hashable and immutable, hence list not used here.
+		Tuple:
+			(1,2,3)
+			immutable
+			Not changing
+			Can be used
+	8. Set
+		Duplicate doesnot allowed
+		Insertion order not preserved
+			hence not perform indexing,slicing,reputation.
+		s={10,20,30,"xyz",10,20}
+			s.update([50,60])
+			s.remove(10)
+			print(s)
+		Frozen set:
+			In Frozen set can not perform update and remove also.
+			f=frozenset(s)
+			print(type(f))
+	9. range type
+		r=range(5)#0 to 4
+		for i in r:
+		    print(i)
+		r1=range(1,6)#1 to 5
+		r2=range(1,12,3)#o/p will be 1,4,7,10
+	10. byte and bytearray
+		lst=[20,30,40,50,60,70,80]
+		b=bytes(lst)#Indexing,slicing,reputation not allowed
+		print(type(b))
+		#b[2]=33
+
+		b1=bytearray(lst)#slicing,reputation not allowed
+		print((type(b1)))
+		b1[0]=10
+		for i in b1:
+		    print(i)
+	11. Dictonary
+		It's key, value pair.
+		dict={1:"Bob",2:"Bill",3:"Joy"}
+		k=dict.keys()
+		v=dict.values()
+		print(dict[2])#print dict of key=2
+		del dict[2]#To delete from dictionary use del function
+		print(dict)
+	12. Immutability
+		In Java, have immutability only with the string type.
+		In Python, all the primitive types and basic types immutability applies.
+		a=10
+		b=10
+		print(id(a))#140704259443416
+		print(id(b))#140704259443416
+		print(a is b)#True
+		a=True
+		b=False
+		print(id(a))#140704258642512
+		print(id(b))#140704258642544
+		print(a is b)#False
+		a="Shila"
+		b="Shila"
+		print(id(a))#1833756275744
+		print(id(b))#1833756275744
+		print(a is b)#True
+
+
+SECTION 5: Special Type
+	1. None type
+		In none type, if not assign any value then assign nNone.
+		Ex 1:	a=None
+			print(a)#None
+		Ex 2: 	def m1():
+				a=10
+			print(m1())#None
+	2. Escape chars
+		print("Shila is \t awesome and cool")
+		print("Shila is \n awesome and cool")
+		print("Shila is 'awesome and cool'")
+		print("Shila is \"awesome and cool\"")
+		print("Shila is \\awesome and cool\\")	
+	3. Constant
+		Constant should be in Upper case.
+		Ex:	PI=3.14
+			INTEREST_RATE=6.7
+	4. del keyword
+		a=10
+		del a
+		print(a)#NameError
+		s ="abcd"
+		s=None
+		print(s)
+
+
+SECTION 6: Operators and Operands
+	1. Arithmetic operators
+		+, -, *, /, %, **(symbol of power), 
+		//(floor div)- performs division and returns the integer quotient.
+		Ex: a,b=10,5
+		print("Multiplication: ",a*b)
+		print("Mod: ",a%b)
+		print("Power:",a**b)
+		print("Floor div: ",a//b)	
+	2. Assignment Operators
+		=, +=, -=, *=, /=, %=, **=, //=
+		Ex: a=b=c=10
+		print(a,b,c)
+		x,y=10,5
+		x+=y	
+		print(x)
+		x*=y
+		print(x) 
+	3. Comparison operator
+		==,!=, >, <, >=, <=
+	4. Logical Operators
+		and, or, not
+		Ex: x,y=20,30
+		x,y=20,30
+		print(x==25 and y==30)#false
+		print(x==20 or y==30)#true
+		print(not(x==20 or y==35))#false
+
+			
+SECTION 7: Input and Output functions
+		input()- for input, 
+		print()- for output
+	1. print():
+		sep()- seperator function
+		Placeholder- %i, %s, %f
+		Ex: a,b=10,20
+		print(a,b,sep=',')
+		name="John"
+		marks=94.5678
+		print("Name is",name,"Marks is",marks)
+		print("Name is %s, Marks are %f"%(name,marks))
+		print("Name is %s, Marks are %.3f"%(name,marks))
+		print("Name is {}, Marks are {}".format(name,marks))
+		print("Name is {0}, Marks are {1}".format(name,marks))
+	2. Input():
+		By default input() give string type
+		s=input("Enter your name:")
+		print(s)
+		i=int(input("Enter a integer number:"))
+		print(type(i))
+	3. Reading multiple inputs
+		lst=[int(x) for x in input("Enter three numbers").split(',')]
+		print(lst)
+
+
+SECTION 8: More Programs			
+	1. Read and display student details
+	2. Average of three numbers
+	3. Area of circle using math.pi
+
+
+SECTION 9: Flow Control Statements
+	1. Control Statements 
+		Conditional
+			if, if..else, if..elif..else
+		Looping
+			for-
+				for var in sequence:
+					statement
+			, while-
+				while condition:
+					statement
+		Transfer
+			break, continue, pass, return
+			assert
+			Ex: i=int(input("Enter a number greater than 10"))
+				assert i>10, "Wrong number entered"
+				print("I entered",i)
+
+
+SECTION 10: Command Line Arguments
+	1. Introduction			
+		Command Line Arguments are passed when python program is run.
+			python myProgram.py 123 xyz abc
+		 	here 123, xyz, abc are command line arguments
+		Command Line Arguments can be FileLocation, Database connection, Remote IP etc.
+		"Command Line Arguments" passed by runtime to our program throught list called "argv".
+		"argv" inside "sys" module in python.
+			sys.argv
+			sys.argv[0](To get first argument)
+	2. Commamd Line Arguments 
+			import sys
+			lst=sys.argv
+		Edit Run/Debug Configurations- set parameters (ex-123 xyz abc)-apply and run.
+		Display the Command Line Arguments
+			for i in lst:print(i)
+		Display the Command Line Arguments Lengths
+			print(len(lst))
+		Script/Program Name
+			The first argument is always the "python file name".
+			print(lst[0])
+		
