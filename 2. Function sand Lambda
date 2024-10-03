@@ -1,0 +1,124 @@
+SECTION 12: Functions
+	1. Introduction
+		Function is a group of statements which perform a perticular task.
+		Advantages: 
+			Re-Usable
+			Modularity
+			Maintenance
+		def: Keyword to define function
+		When invoke/call function needed "()" and when pass as parameter do not need "()".
+		def average(a,b):
+    			return (a+b)/2
+		print(average(10,20))
+	2. Local and Global variable
+		Ex: x=123
+			def display():
+    				y=678
+    				print(y)
+    			print(x)#123
+			display()#678
+			Here x is global variable and y is local variable because defined inside function
+		Accessing global variable with tha same name:
+			globals() used
+			x=123
+			def display():
+				x=678
+				print(x)#678
+				print(globals()['x'])#123
+	3. Assign function to a variable
+		Only assign function name to a variable.
+			def display():
+				x=678
+			y=display#Assign fun to a var
+			y()
+			y()
+	4.Function inside another function
+		def display(name):
+    			def message():
+    			    return "Hello "
+    			result=message()+name
+    			return result
+		print(display("Shila"))
+	5. Function as a parameter
+		def display(fun):
+			return "Hello "+fun
+		def name():
+			return "Shila"
+		print(display(name()))
+	6. Return Function
+		def display():
+			def message():
+        			return "Hello"
+    			return message
+		fun=display()
+		print(fun())
+	7. Pass any type
+		def display(lst):
+    			for i in lst:
+    			    print(i)
+		display([1,2,3,4,5])
+	8. Recursion
+		It's a process of calling function itself.
+			def factorial(n):
+    				if n==1:result= 1
+    				else:result= n*factorial(n-1)
+    				return result
+			print(factorial(5))
+	9.Keyword arguments
+		Using = operator
+			def average(a,b):
+        			print("a:",a)
+        			print("b:",b)
+				print("Average is: ",(a+b)/2)
+			print(average(b=50,a=60))				
+	10. Default arguments
+		def average(a=10, b=20):
+        		print("a:",a)
+      			print("b:",b)
+			return (a+b)/2
+		print(average(a=60))		
+	11. *args and **kwargs
+		*args accepts any number of positional parameters.
+		**kwargs for keyword arguments
+		def myfun(x,*args, **kwargs):
+    			print(x)
+			print(args)
+			print(kwargs)
+		myfun(10, 56,8,9,9,name="Shila", salary=13456789)
+
+
+SECTION 13:Lambdas
+	1. Introduction
+		It's an anonymous functions.
+		Syntax: lambdas argument_list:expression
+		def square(x):return x*x
+		In lambdas:
+			lambda x:x*x
+		Functions:
+			filter():
+				Ex: f2 = list(filter(lambda a:a%2==0,lst)) 
+			map()
+				Ex: f3 = list(map(lambda a:a*2,lst)) 
+			reduce()
+				Ex: result = reduce(lambda a,b:a+b,lst)
+	2. Decorator
+		Decorator is a function that
+			take a function and return a function.
+		It perform some logic on a given function and also return function.
+			Ex: Double the number
+				def decorfun(fun):
+					def inner():
+					        result=fun()
+					        return result*2
+					return inner
+				def num():return 5
+				d=decorfun(num)
+				print(d())
+		To apply the decorator to a function, use "@" with name of decorator-function.
+			@decorfun
+			def num():return 5
+			print(num())
+
+			
+
+
