@@ -1,0 +1,56 @@
+1. Data Types
+	Data Types		Classes			
+	Numeric			int,float,complex
+	String			str
+	Sequence		list, tuple, range
+	Mapping			dict
+	Boolean 		bool
+	Set			set, frozenset
+
+2. List Methods
+	(A PIEIS / RR CCC)
+	A- append()
+	P-pop(), I-insert(), E-extends(), I-index(), S- sort()
+	R- reverse(), R- remove()
+	C- count(), count(substr,start,end), C- clear(), 
+	C- copy(): It returns shallow copy of the list.
+		Shallow copy-
+			list1=[1,2,3]
+			list2=list1
+		Deep copy-
+			list1=[1,2,3]
+			list2=[1,2,3]
+
+3. String Methods
+	(Ultra Lazy Cat Take
+	Sweet Rest
+	For Comfort
+	Sleeping Easily
+	Smiling Joyfully)
+	U-upper(), L- lower()
+	S- strip(), R-rstrip(),replace(old, new)
+	F- find(), C- count()
+	S- startswith(prefix), E- endswith(suffix)
+	S- split(delimiter), J- join()
+
+	isalpha(),
+	isdigit(),
+	isalnum()
+
+4. Searching
+	a. Linear Search
+		Used for unsorted list
+		Took O(n) time complexity
+	b. Binary Search
+		Used for sorted list
+		Took O(logn) time complexity
+
+5. Sorting
+	a. Bubble Sort
+	b. Selection Sort
+	c. Insertion Sort
+	d. Merge Sort
+
+
+
+	

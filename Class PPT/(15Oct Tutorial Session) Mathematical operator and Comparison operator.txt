@@ -1,0 +1,73 @@
+1. Variables and Data Types
+	In programming, variables are used to store data values. 
+	A data type is an attribute of data that tells the compiler or interpreter how the programmer intends to use the data. 
+	Python has various data types including integers (int), floating-point numbers (float), and strings (str).
+	Example
+		my_number = 10  # int
+		temperature = 25.5  # float
+		my_name = 'John'  # str
+2. Mathematical and Comparison Operator
+	Operators are special symbols in Python that carry out arithmetic or logical computation. 
+	Mathematical operators include addition (+), subtraction (-), multiplication (*), and division (/). 
+	Comparison operators compare two values and return True or False depending on the condition. 
+		These include equals to (==), not equals to (!=), greater than (>), and less than (<).
+	Example
+		result = 10 + 5  # addition
+		is_equal = (10 == 5)  # returns False
+3. Control structures
+	Control structures direct the order of execution of the instructions in a program. 
+	The most common control structures in Python are if, else, and elif statements, 
+		which are used for decision making, and loops (for, while) used for iterating over a sequence.
+	Example
+		if temperature > 30:print('It is hot today')
+		else:print('It is not hot today')
+		for i in range(5):
+    			print(i)
+4. Variables naming rules
+	In Python, variable names must start with a letter or an underscore, can only contain letters, numbers, and underscores, and cannot start with a number.
+	Example
+		valid_variable = 1
+		_invalid_variable = 'John'
+		# 9invalid = 'This is not valid'  # This will raise a syntax error 
+5. Boolean Values
+	In Python, boolean data type can take up two values: True or False. 
+	When performing logical operations, Python returns True or False.
+	Example
+		is_student = True
+		above_18 = False
+6. Type Casting
+	Type casting in Python is done using constructor functions like int(), str(), float() which convert one data type into another.
+	Example
+	# Converting integer to string
+		age = 21
+		age_str = str(age)
+		print('Your age is ' + age_str)
+	# Converting string to integer
+		year_str = '2020'
+		year = int(year_str)
+7. Bitwise Operator
+	Bitwise operators in Python include AND (&), OR (|), NOT (~), XOR (^), left shift (<<), and right shift (>>). 
+	These operators are used to perform operations on binary numbers.
+	Example
+	# AND operation
+		result = 5 & 3  # Outputs 1
+	# Left shift operation
+		shifted = 5 << 1  # Outputs 10
+8. Arithmetic operator
+	Arithmetic operations such as addition (+), subtraction (-), multiplication (*), division (/), modulus (%), exponentiation (**), and floor division (//).
+	Example
+	# Addition
+		add = 5 + 3  # Outputs 8
+	# Exponentiation
+		power = 2 ** 3  # Outputs 8
+9. Relational operator
+	Relational (Comparison) operators in Python are used for comparing the values on either side of them and determine the relationship between them. 
+	These include == (equal to), != (not equal to), > (greater than), < (less than), >= (greater than or equal to), <= (less than or equal to).
+	Example
+	# Equal to
+		is_same = (5 == 5)  # True
+	# Greater than
+		is_greater = (10 > 5)  # True
+
+
+

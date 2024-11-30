@@ -1,0 +1,72 @@
+1.OOP
+	A programming paradigm based on the concept of "objects".
+	Objects can contains:
+		Attributes(data)
+		Methods(functions)
+	Key benefits of OOP:
+		Modularity
+		Code Reusability
+
+2. Class
+	A class is a blueprint for creating objects.
+	Defines a structure with attributes and behaviors(methods) of the objects.
+	class Car:
+		def __init__(self,make,model):
+			self.make=make
+			self.model=model
+	Here, Car is a class with attributes make, model.
+
+3. __init__ method: constructor
+	A special method used to initialize attributes of an object.
+	Automatically called when object is created.
+	class Car:
+		def __init__(self,make,model):
+			self.make=make
+			self.model=model
+	myCar=Car("Honda","Civic")
+	print(myCar.make, myCar.model)
+
+4. Instance Attribute
+	These are unique to each object.
+	Defined withih the __init__ method using "self".
+
+5. Instance Methods
+	Instance Methods are functions defined within the class that operate on instances of the  class.
+	Can access and modify instance attributes.
+
+6. Class Methods
+	Class methods can modify class-level attribute.
+	Defined using the @classmethod decorator
+	class Car:
+		num_wheels=4
+		@classmethod
+		def update_wheels(cls, new_count):
+			cls.num_weels=new_count
+	Car.update_wheels(6)
+	print(Car.num_wheels)#6
+
+7. Static Method
+	it's a regular functions but belongs to a class.
+	Defined using @staticmethod decorator.
+	class MathUtils:
+		@staticmethod
+		def add(a,b):	
+			return a+b
+	print(MathUtils.add(5,3))#8
+
+	
+8. String
+	text = "hello-world-python"
+	parts = text.split("-", 1)#['hello', 'world-python']
+	result="-".join(parts[::-1])
+	print(result)#world-python-hello
+
+9. isinstance()
+	x="10"
+	if isinstance(x,int) or type(x)==int:
+	    print("It's an integer")
+	else:
+	    print("It's not an integer")
+	#o/p: It's not an integer
+	
+

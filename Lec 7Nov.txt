@@ -1,0 +1,161 @@
+1. Data structure
+	Data structure are the ways to store ans organize data to efficient to access and modify.
+	Two main categories:
+	a. Primitive Data Strutures:
+		int, float, str, Bool
+	b. Abstract Data Structures:
+		List, Dictionary, Sets, Tuples
+		"Collections" in python that help organize multiple pieces of data efficiently.
+		Example:
+			List: Ordered, mutable collections.
+			Tuple: Ordered, immutable collections.
+			Dictionary: Key-value pairs for fast lookups.
+			Set: Unordered, unique collection.
+
+2. List
+	Storing a collection of items where order matters and items may need to be added or removed.
+	l1 = ["Apple","Banana","Cherry"]
+	l1.append("Orange")
+	print(l1)# ['Apple', 'Banana', 'Cherry', 'Orange']
+	
+	list1 = [1,2,3]
+	list2 = list1
+	list1 += [4,5]
+	print(list1) #[1, 2, 3, 4, 5]
+	print(list2) #[1, 2, 3, 4, 5]
+
+
+3. Tuples
+	Immutable and ordered collection.
+	Useful for storing fixed collections of items, such as coordinated or configuration values.
+	Example:
+		coordinates = (10.0, 20.0)
+		print(coordinates) #(10.0, 20.0)
+		
+		tuples1 = (1,2,3)
+		tuples2 = (4, 5, 6)
+		result = tuples1+tuples2*2
+		print(result)#(1, 2, 3, 4, 5, 6, 4, 5, 6)
+
+	tuple() constructor to make a tuple
+		fruits = tuple(("apple", "banana", "cherry"))
+
+	Nevigation Indexing: Nevigatin indexing means start from the end
+		print(fruits[1]) #banana
+		print(fruits[-1]) #cherry
+	
+	Update Tuples: To update tuples, need to convert in list then we can update.
+		myVaryingTuple = ("str", 1, 1.3, True)
+		l1 = list(myVaryingTuple)
+		l1.append("Shila")
+		print(tuple(l1))#('str', 1, 1.3, True, 'Shila')
+	We can not chnage the "Tuple", but we can extend it.
+		t1 = ("a", "b", "c")
+		y = ("d",)
+		t1 += y
+		print(t1)
+	Packing:
+		When we create a tuple, we normally assign values to it, called "packing" a tuple.
+		t1 = ("a", "b", "c")
+		print(t1)
+	Unpacking:
+		We are allowed to extract the values back into variables, called "unpacking".
+		t1 = ("abc", "bcd", "cde")
+		(a,b,c) = t1
+		print(a)
+		print(b)
+		print(c)
+			
+
+4. Dictionaries
+	Key-value pairs that allow for fast lookup.
+	Great for storing data that requires unique identifiers, like user profiles or inventory items. 
+	"Key" should be unique. If duplicate "key" present then latest value assign to that "key".
+		print(person["name"]) #Alice
+		dict1 = {"a":1, "b":2, "c":3, "d":4}
+		
+		person = {"name":"Shila", "age":28}
+		print(person["name"])#Shila
+		person.update({"addr":"Patna"})
+		print(person) #{'name': 'Shila', 'age': 28, 'addr': 'Patna'}
+		
+		#Print dictionary
+		for item in person:
+    			print(item, person[item])
+
+		dict = {"a":1,"b":2,"a":3}
+		print(dict)#{'a': 3, 'b': 2}
+		print(dict.popitem())
+		print(dict)
+
+	Access dictionary using get() or using "key"
+	d1 = {"a":1,"b":2,"c":3}
+	x=d1["b"]
+	print(x)#2
+	x1=d1.get("b")
+	print(x1)#2
+
+	Get "key" using keys()
+	x2=d1.keys()
+	print(x2)#dict_keys(['a', 'b', 'c'])
+	
+	Get "value" using values()
+	x3 = d1.values()
+	print(x3)#dict_values([1, 2, 3])
+
+	Get "key-value" using items()
+	x4=d1.items()
+	print(x4)#dict_items([('a', 1), ('b', 2), ('c', 3)])
+
+	Add dictionary item
+	d2 = {"aa":1,"bb":2,"cc":3}
+	d2["name"]="Shila"
+	print(d2)#{'aa': 1, 'bb': 2, 'cc': 3, 'name': 'Shila'}
+
+
+5. Sets
+	Unordered collection of unique items.
+	Removing duplicates, performing set operations like union and intersection.
+		colors ={"red", "green","blue"}
+		colors.add("yellow")
+		print(colors) #{'yellow', 'green', 'blue', 'red'}
+
+		set1 = {1,2,3,4}
+		set2 = {3,4,5,6}
+		result = set1&set2 | set1-set2
+		#set1&set2 = {3,4}, set1-set2 = {1,2}
+		print(result) #{1, 2, 3, 4}
+	To add item in set, use update()
+		f1 = {"apple","banana","cherry",}
+		tropical = {"pineapple", "mango","papaya"}
+		f1.update(tropical)
+		print(f1)#{'banana', 'mango', 'papaya', 'apple', 'cherry', 'pineapple'}
+		print(tropical)#{'mango', 'papaya', 'pineapple'}
+
+	To remove items from set use remove(), pop()
+		f1.remove("papaya")
+		print(f1)#{'pineapple', 'apple', 'cherry', 'banana', 'mango'}
+		x=f1.pop()
+		print(f1)#{'apple', 'cherry', 'banana', 'mango'}
+
+	To join sets, use union()
+	#union() or "|" to add set
+	s1={"a","b","c"}
+	s2={1,2,3}
+	s3 = s1.union(s2)
+	print(s3)#{'c', 1, 'a', 2, 3, 'b'}
+
+	s4 = s1|s2
+	print(s4)#{1, 2, 3, 'c', 'b', 'a'}
+
+
+6. Comparison of Abstarct Data Structure
+	Data Structure		Mutable		Ordered		Example Use Case
+	List			Yes		Yes		Collection of changing items
+	Tuple			No		Yes		Fixed data like coordinates
+	Dictonary		Yes		No		Data with unique identifiers
+	Set			Yes		No		Removing duplicates	
+
+
+
+

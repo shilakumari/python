@@ -1,0 +1,51 @@
+1. Nested Loops
+	Nested loops refer to having one or more loops inside another loop. The inner loop will complete all its iterations before the outer loop completes one iteration. This is used for iterating over multi-dimensional data structures or performing operations that require multiple levels of looping.
+
+Example
+
+for i in range(1, 3):  # Outer loop
+    for j in range(1, 4):  # Inner loop
+        print(f'i = {i}, j = {j}')
+2. Lists
+	Lists in Python are ordered, mutable (changeable), collections of items which can be of mixed data types. Lists are defined by having values between square brackets [].
+
+Example
+
+my_list = ['Hello', 100, 23.47, True]
+print(my_list)
+This code initializes a list containing a string, an integer, a float, and a Boolean, then prints the list.
+3. Indexing Lists
+	Accessing elements in a list is done through indexing. Indexing starts at 0 for the first element, 1 for the second, and so on. Negative indexing starts from the end of the list with -1 referring to the last item, -2 the second-last, and so forth.
+
+Example
+
+my_list = [1, 2, 3, 4, 5]
+print(my_list[0])  # Prints the first element
+print(my_list[-1]) # Prints the last element
+4. Appending to lists
+	Appending an item to a list adds the item to the end of the list. This is done using the .append() method.
+
+Example
+
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)
+5. Generating Patterns with nested loops
+	Nested loops can be used to generate patterns by carefully controlling the number of iterations in the outer and inner loops based on the desired output shape.
+
+Example
+
+for i in range(1, 5):  # outer loop for each row
+    for j in range(1, i + 1):  # inner loop for each column
+        print('*', end='')
+    print('')
+6. 2D array and nested loops
+	Nested loops are essential when dealing with two-dimensional (2D) arrays or lists of lists in Python. The outer loop iterates through the rows, while the inner loop goes through each column in the row.
+
+Example
+
+matrix = [[1, 2], [3, 4], [5, 6]]
+for row in matrix:  # Outer loop for each row
+    for item in row:  # Inner loop for each column in the row
+        print(item, end=' ')
+    print('')

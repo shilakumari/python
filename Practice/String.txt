@@ -1,0 +1,15 @@
+1. Concatenate the two string "Hello" and "World" with between space.
+
+2. Format a string, create a formatted string that includes variables name as "Alice" and age as 25 usingthree different methods.
+
+3. Slice a string: extract 'python' and 'programming' from the string 'Python Programming'
+
+4. Use string methods: convert "Hellow world" to lowercase, uppercase, strip the spaces, and replace 'World' with 'python'.
+
+5. Check for substring: Check if the word 'Python' is present in the string "Learing Python is fun!"
+
+6. Split and join a string: Split the sentence "Python is awesome" into and join them back into a single string.
+
+7. Find substring index: find the starting index of the word "Programming" in the string "Python programming is powerful".
+
+8. 

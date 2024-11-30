@@ -1,0 +1,84 @@
+1. String 
+	String is a sequence of characters enclosed in quotes("" or '').
+	Example: name="Python" 
+		char='P'
+	String Immutability:
+		Once created, strings cannot be changed.
+		Modifying strings creates new objects.
+		Example: s="Hello"
+			 s[0]="h" # This raise an error
+			myNewString = s.replace("H","h")
+			print(s)#Hello
+			print(myNewString)#hello
+
+	Basic Operations:
+		Concatenation
+		Slicing
+		Indexing
+
+	Useful methods:
+		upper(), lower(), replace(),strip(), split(), join(), capitalize(),title(), swapcase()
+
+2. Basic Operations
+	Concatenation: Using + to combine strings.
+	Repetition: Using * to repeat strings.
+		Example:
+		print("Hello "+"World") #Hello World
+		print("Ha"*3) #HaHaHa
+ 
+3. Accessing String Characters
+	Access characters via index.
+	First character: s[0], Last charater: s[-1]
+		Example:
+		s="Python"
+		print(s[0]," ", s[-1])#P n
+	
+3. Slicing String
+	slicing string syntax
+		start:end
+	slicing from start s[:n], slicing from end s[n:]
+		Example:
+		s="Python"
+		print(s[0:4]) #Pyth
+		print(s[2:]) #thon
+		print(s[4:-1]) #o
+		print(s[4:-2]) #''
+
+txt = "Python is fun and Python is powerful!"
+print(txt.replace("Python", "Java", 1))# here 1 means one instance
+print(txt.count("is")) 
+		
+s="Hello"
+#To reverse 's'
+print(s[-1::-1])
+
+print(type(s))
+
+s.replace("H","B")
+print(s)
+
+text="Python is fun!"
+print(text[:6]+text[-4:-100:-1])
+
+text="Python"
+print(text[::-1]==text[-1::-1])
+
+
+#String Formatting Methods
+name="alice"
+age=25.50
+
+#old style using %
+print("name is %s and age is %8f" %(name,age))
+print("name is %s and age is %10f" %(name,age))
+print("name is %s and age is %.2f" %(name,age))
+print("name is %s and age is %.1f" %(name,age))
+print("name is %s and age is %.0f" %(name,age))
+#print("name is %s and age is %.-1f" %(name,age))#Not allowed
+
+# .format() method
+print("name is {} and age is {}".format(name, age))
+
+# using f-String (Python 3.6+)
+print(f"name is {name} and age is {age}")
+

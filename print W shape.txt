@@ -1,0 +1,6 @@
+def drawWShape(size):
+    for i in range(size):
+        print(" "*i+"\\"+" "*(2*(size-i-1))+"/", end="")
+        print(" "*(2*i)+"\\", end="")
+        print(" "*(2*(size-i-1))+"/")
+drawWShape(5)

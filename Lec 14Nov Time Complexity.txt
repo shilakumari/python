@@ -1,0 +1,106 @@
+1. Data Manipulation, Brute Force
+	Advanced data manipulation enables powerful and flexible programming.
+	Knowing algorithms provides essential tools for problem solving.	
+	Complexity analysis ensures code is efficient and scalable.
+	Brute force explores all options to find a solution.
+	Brute force is limited by inefficiency with large datasets.
+
+2. Functional Programming
+	1. Map Function
+		Apply a functions to all items.
+			nums = [1,2,3,4]
+			squares  = list(map(lambda x:x*x,nums))
+			print(squares)#[1, 4, 9, 16]
+	2. Filter Function
+		Apply Function based on condition.
+			nums=[1,2,3,4]
+			even_nums=list(filter(lambda x: x%2==0,nums)) 
+			print(even)#[2,4]
+	3. Reduce Function
+		Apply a rolling computation.
+			from functools import reduce
+			nums=[1,2,3,4]
+			product=reduce(lambda x,y:x+y,nums)) 
+			print(product)#10		
+
+3. What does Complexity Mean?
+	Complexity is like measuring how hard or easy something is for a computer to do.
+4. Types of Complexity Analysis
+	2 Types: Time and Space
+		Time: How long it takes for code to finish.
+		space: Is how much memory it uses up.
+	Common Big O notations:
+		Linear and Logerithmic Complexities (O(n) and O(logn))
+		Quadratic and Higher Complexities (O(n^2) and beyond)
+		Time vs. Space Trade-offs
+		Importance of optimization in Real-world Applications
+
+5. Why does complexity matters?
+	Aspect			Organized Manner
+	Planning		Tasks are planned step-by-step
+	Time out 		Generally quicker, as steps are thought out
+	Efficiency 		High, as resources and actions are optimized
+	Errors			Fewer errors because steps are followed systematically
+	Goal Achievement	Reached predictably and often faster	
+
+6. Big O Notation Basics
+	O(1)- Constant Time:
+		No matter how much data there is, it always takes the same time.
+		def get_item(items):
+			return item[0]
+	O(n)- Linear Time:
+		It takes longer as the amount of gets bigger.
+		def find_item(items, target):
+			for items in items:
+				if item==target:
+					return True
+			return False
+	O(n^2)- Quadratic Time: 
+		Takes even longer because it checks data twice.
+		def check_all_pairs(items):
+			for i in range(len(items)):
+				for j in range(len(items)):
+					if items[i]==items[j] and i!=j:
+						print("Matching pair found!")
+	O(logn)-
+		It's like guessing a number between 1 and 100 by starting in the middle,
+		then halving the range each time. You only need a few guesses!
+			By halving range each-time time-complexity is O(logn).
+		def guess_number(target):
+			low,high=1, 100
+			while low<= high:
+				mid = (low+high)//2
+				if mid==target:
+					return mid
+				low,high=(mid+1,high) if mid<target else (low, mid-1)
+			return -1
+		print(guess_number(73))#73
+		
+7. Why Space Complexity Matter?		
+	If a program uses too much memory, it can make computer slow or even crash.
+	Efficient use of memory helps programs run smoothly.
+	
+8. Constant Space O(1)
+	Constant space means the memory used doesn't grow with more data.
+		def add_two_number(a,b):
+			return a+b
+	Expected memory: only enough space for a and b, no matter how big the numbers.
+
+9. Quadratic Space (O(n^2)) 
+	Memory grows even faster as data increases.
+		Ex 1: def create_table(n):
+			table=[[0]*i for i in range(n)] 
+			return table
+		print(create_table(5))#[[], [0], [0, 0], [0, 0, 0], [0, 0, 0, 0]]
+
+		Ex 2: def create_table(n):
+			table=[list(range(i)) for i in range(n)] 
+			return table
+		print(create_table(5))#[[], [0], [0, 1], [0, 1, 2], [0, 1, 2, 3]]
+	for each new item, memory needs grow even more faster.
+	
+		
+
+
+
+

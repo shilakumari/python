@@ -1,0 +1,25 @@
+Book name: learning Python and author:mark lutz
+
+https://colab.research.google.com/
+print(ord("A")#decimal value of A
+print(char(97))# char value of 97
+print(bin(97))#binary form of 97
+
+Variable
+atleast 4 bytes(32bits) to store interger.
+import sys
+sys.getsizeof(0)#24
+sys.getsizeof(1)#32
+sys.getsizeof(2)#32
+print(type(2))#int
+
+1 byte for character
+sys.getsizeof("")#49
+sys.getsizeof("c")#50
+sys.getsizeof("cd")#51
+
+8 bytes for float
+
+Methods:
+	len()
+	replace()

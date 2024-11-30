@@ -1,0 +1,66 @@
+1. Loops in Python
+	Loops are used for iterating over a sequence of items or executing a block of code multiple times. 
+	2 types of loops: for and while.
+	For Loop: Used for iterating over a sequence (list, tuple, dictionary, set, or string) or other iterable objects. 
+		Iterating over a sequence is called traversal. 
+		Example 
+			fruits = ['apple', 'banana', 'cherry']
+			for fruit in fruits:
+			  print(fruit)
+	While Loop: Executes a set of statements as long as a condition is true. 
+		Example
+			i = 1
+			while i < 6:
+			  print(i)
+			  i += 1
+2. break, continue and pass statements
+	In Python, break, continue, and pass are control statements that can alter the flow of a loop.
+	Break Statement: Used to exit a loop prematurely when a condition is met. Example
+	for i in range(10):
+	  if i == 5:
+	    break
+	  print(i)
+	Continue Statement: Skips the rest of the code inside a loop for the current iteration and moves to the next iteration. Example
+	for i in range(10):
+	  if i % 2 == 0:
+	    continue
+	  print(i)
+	Pass Statement: Used as a placeholder for future code, does nothing when executed. Example
+	for i in range(10):
+	  pass
+3. Nested Loops
+	Python allows the use of one loop inside another loop, known as nested loops. 
+	The inner loop will finish all of its iterations before finishing one iteration of the outer loop.
+	Example
+	for i in range(3):  # Outer loop
+	    for j in range(3):  # Inner loop
+	        print(f'({i}, {j})')
+	This code example will print pairs of numbers from (0, 0) to (2, 2),
+4. Using Loops with data structures
+	Loops can iterate over data structures like lists, tuples, dictionaries, and sets in Python, allowing for efficient data manipulation and access.
+	Iterating Over Lists and Tuples Example for List
+	numbers = [1, 2, 3, 4, 5]
+	for number in numbers:
+	  print(number)
+	Example for Tuple
+	coordinates = (1, 2, 3)
+	for coordinate in coordinates:
+	  print(coordinate)
+	Iterating Over Dictionaries To iterate over both keys and values, you can use the .items() method. Example
+	capitals = {'USA': 'Washington D.C.', 'France': 'Paris', 'Italy': 'Rome'}
+	for country, capital in capitals.items():
+	  print(f'The capital of {country} is {capital}')
+5. Range Function
+	The range() function returns a sequence of numbers and is commonly used in for loops for specifying the number of iterations.
+	The function can take 1, 2, or 3 parameters: range(stop), range(start, stop), and range(start, stop, step).
+	Example
+	# Using range with 1 parameter
+		for i in range(5):
+		  print(i)  # Prints numbers from 0 to 4
+	# Using range with 2 parameters
+		for i in range(3, 6):
+		  print(i)  # Prints numbers from 3 to 5
+	# Using range with 3 parameters
+		for i in range(0, 10, 2):
+		  print(i)  # Prints even numbers from 0 to 8
+

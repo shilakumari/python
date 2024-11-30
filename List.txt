@@ -1,0 +1,17 @@
+1. List Examples
+	Example 1: 
+		numbers = [5, 10, 15]
+		for num in numbers:
+		    # '_' is valid variable and not using it
+		    for _ in range(num//5):
+		        print(num, end=' ')
+		    print()
+	Example 2:
+		#Reverse list
+		numbers=[10,20,30,40]
+		reversed_list = []
+		for i in range(len(numbers)-1,-1,-1):
+		    reversed_list.append(numbers[i])
+		print(reversed_list)
+
+	

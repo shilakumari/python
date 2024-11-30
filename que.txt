@@ -1,0 +1,6 @@
+first- free
+second- k cost
+third- 2*k
+xth = (x-1)*k
+find max number of items
+5 30-> 4

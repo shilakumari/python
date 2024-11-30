@@ -1,0 +1,45 @@
+1. Self parameter
+	"self" parameter is a reference of the current instance of the class, 
+	and used to access variables that belong to the class.
+	"self" can be replaced by any other name also, but it has to be first parameter of the any function in the class.
+	Instance attributes are unique to each object, are access by "self" and defined inside the "init(self,...)"
+	class Person:
+    		def __init__(mySelf, name, age):
+        		mySelf.name=name
+        		mySelf.age=age
+    		#Instance method
+	    	def fromString(mySelf2):
+        		print("Hello, my name is: ",mySelf2.name)
+
+	p = Person("Shiela", 28)
+	p.fromString()	
+	print(p)#<__main__.Person object
+
+2. Using __str__ method
+	class Person:
+	    def __init__(mySelf, name, age):
+	        mySelf.name=name
+	        mySelf.age=age
+	   def __str__(self):
+	        return f"Hello, my name is: {self.name} and age {self.age}"
+
+	p = Person("Shiela", 28)
+	print(p)#Hello, my name is: Shiela and age 28
+
+3. Object as Parameter
+	from temp import Example
+class Mydetails:
+    def __init__(self, obj):
+        self.obj = obj
+
+obj = Example()
+print(type(obj))#<class 'temp.Example'>
+myDetailsObj = Mydetails(obj)
+print(type(myDetailsObj))#<class 'temp.Example'>
+
+myDetailsObj.obj.instanceMethod()
+
+4. Questions
+	A static method can access instance variable directly. -> False
+	You must create an object to call a class method. -> False
+

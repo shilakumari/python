@@ -1,0 +1,16 @@
+String
+S="""...multipleline..."""	-> Triple-quoted block strings
+S= r'\temp\spam'		-> Raw stringd (no escapes)
+B= b'sp\xc4m'		-> Byte strings in 2.6, 2.7, and 3.X
+U= u'sp\u00c4m'		-> Unicode strings in 2.X and 3.3+
+S1 + S2			-> Concatenate, repeat
+S * 3
+S[i]
+S[i:j]
+len(S)
+"a %s parrot" % kind		-> String formatting expression
+"a {0} parrot".format(kind)		->String formatting method in 2.6, 2.7 and 3.X
+S.find("pa")			-> String methods: search
+S.rstrip()			->  remove whitespace,
+S.replace("pa","xx")		-> replacement
+S.split()			-> split on delimiter

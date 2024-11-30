@@ -1,0 +1,63 @@
+Input Taking In python
+
+1.Quick Recap: Time and Space complexity
+	Complexity analysis measures time and memory efficiency.
+
+1. Understanding the input() Function
+	The input() function pauses the program and wait for user text input, returning it as a string.
+	Syntax: input(prompt)
+	Always returns a string, regardless of input type.
+	
+	age= input("How old are you?")
+	print("you are "+age+" years old.")
+
+2. Type Conversion for input value
+	Converting Input from String to other types
+		age=int(input("Enter your age: "))
+		height=float(input("Enter your height in meters: "))
+		is_student= bool(input("Are you a student? (1 for Yes, 0 for No):"))
+		print("Age:",age,"Height:",height,"Student:",is_student)
+	
+3. Handling invalid input with Try-Except
+	Error handling for safe input.
+		try:
+			number=int(input("Enter a number"))
+			print("You entered:",number)
+		except ValueError:
+			print("That's not a valid number!")
+	To handle more than one error, use errors in the form of tuples.
+		try:
+			number=int(input("Integer please"))
+			print(number)
+		except (KeyError,ValueError):
+			print("Wrong Input")
+		
+		o/p: Integer please 21
+			21
+		o/p: Integer please twenty
+			Wrong Input
+
+4. "KeyError" and "Index out of range" 
+	list1=[56,78]
+	print(list1[100])#list index out of range
+	mydict={"a":1}
+	print(mydict["b"])#KeyError: 'b'
+
+5. Taking multiple inputs with one input()
+	name, age=input("Enter name and age").split()
+	print("Name:", name, "age:",age)
+	Excepted Output:
+		Input: Arjun 25
+		Name: Arjun age: 25
+
+6. Positional vs Keyword Arguments
+	Positional Arguments: Passed in order
+	Keyword Arguments: Passed by name
+	Example:
+		def greet(name="Guest"):
+			print(f"Hello, {name}!")
+		greet(name="Alice")#output: Hello, Alice!
+		greet()#output: Hello, Guest!
+
+
+

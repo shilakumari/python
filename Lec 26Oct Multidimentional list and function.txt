@@ -1,0 +1,132 @@
+List comprehension Example:
+	myList=[1, 12, 4, 3, 6]
+	op=[x for x in myList if (x%2==0)]
+	print(op)
+	op1=[x for x in myList if (x&1==0)] # '&' operator is faster than '%'
+	print(op1)
+
+Section 1. multidimensional list
+	Multidimensional list is a list where elements themselves ae lists.
+	3D list:
+		A 3D list is a collection of 2D lists.
+		Accessing 3D elements -> use three indices.
+		Iterate through a 3D list -> you can use nested loops to iterate through a 3D list.
+
+		cube = [[[1,2],[3,4]],[[5,6],[7,8]]]
+	l2d = [[1,2],[3,4]]
+	l2d[0]#[1,2]
+	l2d[0][0]#1
+	1. First way to write multidimensional list
+		matrix3=[]
+		for j in range(3):
+		    matrix3.append([])
+		    for i in range(3):
+		        matrix3[j].append(i)
+		print(matrix3)
+	2. Second way to write multidimensional list (List comprehension)
+		matrix2 = [[i for i in range(3)] for j in range(3)]
+		print(matrix2)
+	3. Adding and removing elements/rows
+		append(): add element by values at last of the list.
+		insert(): add element by index
+		remove(): if dupicate present then remove first instace from the list
+		pop(): remove by index.
+	4. Applications of multidimensional lists
+		Multidimensional lists widely used in:
+			Matrices for mathematical operations
+			Image processing (e.g., 2D array for grayscale images, 3D for RGB)
+			Game boards (e.g., chessboard, tic-tac-toe)
+
+
+Section 2: Function
+	Functions are reuseable block of code that perform specific tasks.
+		Syntax: def function_name(paramters):
+				#code block
+				return value
+	We can pass data to function using parameters:
+		def greet(name):
+			print(f"Hello, {name}!")
+	
+	1. If want to define specific type of arguments, how to do this?
+		Define parameters with their types directly in the function signature.
+		def greet(name:str, age:int):
+			print(f"Hello {name}. You are {age} years old")
+
+	2. What is **kwargs?
+		**kwargs allows to pass a variable number of keyword arguments (arguments that are passed as key-value pairs) to a function.
+
+	3. Arguments
+		Positional Arguments
+		Keyword Arguments
+
+	4. Positional vs Keyword Arguments
+		Positional Arguments: Passed by order
+			Ex 1: def subtract(x,y):
+				return x-y
+			print(4,3)
+
+			Ex 2: def add_sub(x,y):
+				return x+y,x-y
+			print(add_sub(3,2)) # opt: (5, 1) - it's a form of tuple.
+
+		Keyword Arguments: Passed by name
+			Ex 1: def greet(name="Guest"):
+				print(f"Hello, {name}!")
+			greet(name="Alice") #output: Hello, Alice!
+			greet() #output: Hello, Guest!
+
+			Ex 2: def subtract(bigger=4,smaller=2):
+				return bigger-smaller
+			print(subtract())#2
+			print(subtract(smaller=3, bigger=4))#1
+		We cann't put default argument before non-default argument.
+
+	5. A function can return multiple values using "return" statement.
+		Ex 1: def square(x):
+			return x*x
+		print(square(2)) #4
+		print(square(-3)) #9
+		Ex 2: def cube(x):
+			return x*x*x
+		print(cube(2)) #4
+		print(cube(-3)) #9
+
+	6. input()
+		s = input("give me a string:")
+		print(s)
+		ON console: 
+			give me a string: hello world
+			hello world
+
+	7. Parameters or Arguments
+		The parameter and argument can be used for the same thing:
+			Information that are passed into a function.
+		Parameter:
+			A parameter is the variable listed the parentheses in the function definition.
+		Argument:
+			An argument is the value that is sent to the function when it is called.
+		Ex: def fun(fname):
+			print(fname) # 'fname' is a parameter
+		print("Email") # 'Email' is a argument
+		print("Linus")
+					
+Section 3. Lambda
+	A lambda function is an anonymous function defined with a single expression:
+	A lambda function can take any number of arguments, but can only have one expression.
+	A lambda function can have only sigle statement.
+		Ex 1: add = lambda x, y: x+y
+		print(add(3,2))
+		Ex 2: lambda_dist = lambda x1,y1,x2,y2:((x2-x1)**2 + (y2-y1)**2)**0.5 #0.5 means square-root
+		print(lambda_dist(0,0,2,2)) #2.828
+
+	1. Why we use Lambda?
+		Lambda functions are ideal for short, simple functions that are used temporarily.
+		We will more use of this higher order and anonymous function.
+	2. CODE FOR TIC TAC TOE GAME:
+		
+
+
+3. Is Python call by value or call by reference?
+Ans: "call by object reference" or "call by assignment"
+
+

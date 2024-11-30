@@ -1,0 +1,72 @@
+1. Takeaways
+	Conditional statements:
+		if-else,elif statement
+		Nested conditions
+		Ternary Operator
+	Loops:
+		For loop
+		While loop
+		Loop Control Statement(Break, Continue)
+		
+	Nested loops and list
+
+(Lec 20Nov)	
+2. Multidimensional Lists
+	A multidimensional list is a list where elements themselves are lists.
+	matrix=[[1,2,3],[4,5,6],[7,8,9]]
+	print(matrix[0])#[1,2,3]
+	print(matrix[0][1])#2
+	
+	matrix1=[[1,2],[3,4],[5,6]]
+	for i in range(len(matrix1)):
+	    for j in range(len(matrix1[i])):
+	        if i==j:print(matrix1[i][j],end=" ")#1 4
+	
+3. 3D lists
+	A 3D list is a collection of 2D list.
+	cube=[[[1,2], [3,4]], [[5,6], [7,8]]]
+	print(cube[0])#[[1, 2], [3, 4]]
+
+4. List Manipulation (Adding, Removing elements)
+	Adding:
+		matrix=[[1,2,3],[4,5,6],[7,8,9]]
+		matrix.append([10,11, 12])
+		print(matrix)#[[1,2,3],[4,5,6],[7,8,9],[10,11, 12]]
+	Removing:
+		cube=[[[1,2], [3,4]], [[5,6], [7,8]]]
+		print(cube[0][1].pop(0))#3 removed from the 3D list
+		print(cube)#[[[1, 2], [4]], [[5, 6], [7, 8]]]
+
+	cube1=[[[1,2,3]],[[4,5]],[[6,7,8,9]]]
+	for table in cube1:
+	    for row in table:
+	        for elem in row:
+	            if elem%2==0:
+	                print(elem,end=" ")#2 4 6 8
+
+5. List comprehension 
+	matrix2=[[i+j for i in range(2)]for j in range(2)]
+	print(matrix2)#[[0,1],[1,2]]
+
+6. Lambda Function
+	It's an anonymous function defined with a single expression.
+	lambda_add= lambda x,y: x+y
+	print(lambda_add(2,3))#5
+
+7. Functions
+	Defining Funcions
+	Function Parameters
+	Return Values
+	Lambda Functions
+
+8. Inbuilt Function
+	Mathematical functions
+	String Functions
+	List Functions
+	Utility Functions
+
+
+ 
+
+
+

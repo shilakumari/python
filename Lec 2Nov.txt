@@ -1,0 +1,167 @@
+Classes and Inbuilt Functions
+1. class
+	It's a blueprint for creating objects.
+	class contain attributes(data) and behaviours(methods) of the objects.
+
+2. Creating objects from a class
+	Objects are instances of a class.
+
+3. The __init__ method - The Constructor
+	A special method used to initialize the attributes of an object.
+	Autometically called when an object is created.
+	class Car:
+		def __init__(self, make, model, year):
+        	self.make=make
+        	self.model=model
+        	self.year=year
+	myCar = Car("Honda", "Civic", 2022)
+	print(myCar.model)
+
+4. "self" in Classes
+	"self" refers to the current instance of the class.
+	Used to access attributes and methods within the class.
+	It's important to call "self" because it helps in storing the address of the object or the instance which are talking about.
+	class Car:
+		def __init__(self, make, model, year):
+        	self.make=make
+        	self.model=model
+        	self.year=year
+       		def display(self):
+        		print(f"Car: {self.make} {self.model} {self.year}")
+	myCar = Car("Honda", "Civic", 2022)
+	print(myCar.model) #Civic
+	myCar.display() #Car: Honda Civic 2022
+
+5. Instance Attributes
+	Instance attributes are unique to each object.
+	Defined within the __init__ method using "self".
+	class Car:
+		def __init__(self, make, model, year):
+        	self.make=make
+        	self.model=model
+        	self.year=year
+	
+6. Instance Methods
+	Instane method are defined within a class that operate on instances of the class.
+	Can access and modify instance attributes.
+	class Car:
+		def __init__(self, make, model, year):
+        	self.make=make
+        	self.model=model
+        	self.year=year
+       		def display(self):
+        		print(f"Car: {self.make} {self.model} {self.year}")
+	here display() is an instance method.
+
+7. Class Attributes
+	Shared accross all instances of a class.
+	Defined within the class but outside the __init__ method.
+	class Dog:
+		species = "Canine" #class attribute
+    		def __init__(self, name):
+        		self.name = name #instance attribute
+
+	dog1  = Dog("Buddy")
+	dog2 = Dog("Charlie")
+	print(dog1.species)
+	print(dog2.species)
+
+8. Class Methods
+	Class method can modify class-level attributes.
+	Defined using @classmethod decorator.
+	class Car:
+		numWheels = 4
+		@classmethod
+		def updateWheels(cls, newCount):
+			cls.numWheels = newCount
+	Car.updateWheels(6)
+	print(Car.numWheels) #6
+
+	Class Method as Alternative Constructors:
+		class Car:
+		    	def __init__(self, make, model, year):
+        		self.make=make
+        		self.model=model
+        		self.year=year
+    			@classmethod
+    			def fromString(cls, carStr):
+        			make, model,year = carStr.split("-")
+        			return cls(make,model,year)
+		myCar = Car.fromString("Honda-Civic-2022")
+		print(myCar.model) #Civic
+
+9. Static Methods
+	Static methods are like regular functions but belongs to a class.
+	Defined using @staticmethod decorator.
+	class MathUtils:
+		@staticmethod
+		def add(a,b):
+			return a+b
+	print(MathUtils.add(5,3)) #8
+
+	Q. do we need to use @staticmethod decorator while declaring static method?
+		Yes. Without @staticmethod decorator the method will not be treated as satic method,
+		meaning it would expect a reference to an instance of the class (self) when called.
+		Which could lead to errors if we attempt to call it directly from the class without an instance.
+		Each static method requires @staticmethod decorator.
+
+	Q. Can we modify static variable?
+		Yes, we can modify but if we modify the static variable via class name, the change will apply to all instance.
+
+
+10. Built-in functions in Python
+	Build-in functions are pre-defined in Python for common tasks.
+	Mathematical Functions
+	String Functions
+	List Functions
+	Utility Functions
+	
+11. Mathematical Functions Examples
+	abs(): Returns the absolute value
+	round(): Rounds a number
+	pow(): Raises to a power
+	Example: print(abs(-7)) #7
+		print(pow(2, 3)) #8
+		print(round(-31.1221, 2)) #-31.12
+		print(round(-31.156, 2)) #-31.16
+		print(round(-31.154, 2)) #-31.15
+		print(round(-31.187, 2)) #-31.19
+		print(round(-31.185, 2)) #-31.18
+		print(round(-31.186, 2)) #-31.19
+
+12. String Functions/Methods Examples
+	len(): Returns length of strings
+	upper(): Coverts to uppercase
+	replace(): Replaces substring
+	Example: text="hello"
+		print(text.upper()) #HELLO
+		print(len(text)) #5
+		print(text.replace("l","e",1)) #heelo
+	Advanced String Manipulation:
+		split()
+		join()
+		strip()
+		sentence = " Hello World!"
+			print(sentence.strip())
+			print(sentence.split(" "))
+			print("-".join(sentence.split()))
+		txt ="Hello-good-morning-World-Python"
+		part = txt.split("-",3) #Hello World-Python
+		result = ",".join(part[::-1]) #World-Python,morning,good,Hello
+		print(result)
+
+13. List Functions
+	len(): Return length of list
+	append(): Adds elements to the end
+	pop(): Remove elments
+		numbers = [1, 2, 3]
+		numbers.append(4)
+		print(numbers) #[1, 2, 3, 4]
+
+14. Utility functions
+	type(), isinstance(), print(), input()
+		x="10"
+		if isinstance(x, int) or type(x) == int:
+		    print("It's an integer")
+		else:
+		    print("It's not an integer")
