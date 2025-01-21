@@ -1,0 +1,71 @@
+1. Interfaces
+	An interface tells you what methods a class should have, but not how to implement them.
+	Ex:
+	An interface as a "to-do list" for classes.
+	If  a class says, "I follow this interface", it promises to have certain methods.
+
+2.Interface in Python
+	There is no keyword "Interface", instead we often use:
+	1. Abstract Base Classes (ABC):
+		To enforce that certain methods must be defined.
+	2. Duck Typing
+		To accept any object that has the required methods.
+
+3. ABC (ABstract Base Class)
+	ABCs let you define methods that must be implemented in subclasses.
+	If a subclass doesn't implement these methods, it can't be instantiated.
+	This ensures consistency across all classes that claim to follow the same interface.
+	Ex:
+	from abc import ABC, abstractmethod
+	class Printable(ABC):
+	    @abstractmethod
+	    def print_data(self):pass
+	class Report(Printable):
+	    def print_data(self):print("Report: Sales Data")
+	r=Report()
+	r.print_data()#Report: Sales Data
+
+4. Duck Typing
+	Duck typing means we don't need formal inheritance.
+	If an object has the methods we need, we treat it as if it follows the interface.
+	This gives flexibility but no upfront enforcement.
+	Ex:
+	class Printer:
+    		def print_data(self):
+			print("Printer:Document")
+	#In this function using "Printer" as a parameter to get methods available in "Printer". 
+	def use_printer(obj):
+		    obj.print_data()
+	p=Printer()
+	use_printer(p)#Printer:Document
+
+*****Class Activity*****:
+Define an interface with ABC(Abstract Base Class) named "Document" with abstract method "display_content".
+Create two classes "TextDocument" and "ImageDocument", that both implement "display_content".
+Method in "TextDocument" print Displaying text"" and method in "ImageDocument" print "Showing image".
+	class Document(ABC):
+		@abstractmethod
+		def display_content(self):
+			pass
+	class TextDocument(Document):
+		def display_content(self):
+			print("Displaying text")
+	class ImageDocument(Document):
+		def display_content(self):
+			print("Showing image")
+	td=TextDocument()
+	td.display_content()#Displaying text	
+	id=ImageDocument()
+	id.display_content()#Showing image	
+
+
+5. Early vs. Late Binding
+	Main idea:
+	Early Binding:
+		Deciding which method to call at compile time(common in static languages).
+	Late Binding:
+		Deciding which method to call at runtime(Python's way).
+
+6. Why Python uses Late Binding?
+	More Flexibility.
+	We can change methods on the fly, but this also means errors at runtime if method doesn't exist.

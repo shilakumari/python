@@ -1,0 +1,80 @@
+1. File Handling
+	open(-,-): function to open a file.
+	"r":Read-Default value.
+		open a file for reading, error if file does not exist.
+	"w":Write
+		open a file for writing, creates the file if does not exist.
+	"a":Append
+		open a file for appending, creates the file if does not exist.
+	"x":Create
+		creates the specified file, return an error if file exist.
+	"t":Text - Default value
+		Text mode
+	"b":Binary
+		Binary mode(e.g. images)
+	"rt":Read text file
+
+	read() method for reading the content of the file.
+
+2. File Operations
+	1. Creating File
+		f=open("myfile.txt","x")
+	
+	2. Deleting a file
+		To delete a file, you must import os module, and run its os.remove() function.
+		import os
+		os.remove("myfile.txt")
+
+	3. Check file existance
+		import os
+		if os.path.exists("myfile.txt"):
+			os.remove("myfile.txt")
+		else:
+			print("File does not exists")
+
+3. Folder Operations
+	1. Create Folder
+		To create an empty folder, use os.mkdir() method.
+		os.mkdir("empty_folder")
+
+	2. Delete Folder
+		To delete an entire folder, use the os.rmdir() method.
+		os.rmdir("empty_folder")
+
+4. Read JSON
+	In "pandas" module methods available for reading and writing to json file.
+		read_json() - To read json file
+		write_json() -  To write json file
+	import pandas as pd
+	import json
+	df = pd.read_json("sample.json")
+	print(df.to_string())
+ 
+5. Serialize the data to a json file
+	import json
+	data={
+		"name":"Shila Kumari",
+		"age":27
+	}
+	
+	#Serializing data to a json file
+	with open("data.json","w") as json_file:
+		json.dump(data, json_file)
+	
+	#Deserialize the data from the json file
+	with open("data.json","r") as json_file:
+		loaded_data = json.load(json_file)
+		print(loaded_data)
+
+6. Serialize the data to a pickle file
+	data={
+		"name":"Shila Kumari",
+		"age":27
+	}
+	#Serializing data to a pickle file
+	with open("data.pkl","wb") as pickle_file:
+		pickle.dump(data, pickle_file)
+	#Deserialize data to a pickle file
+	with open("data.pkl","rb") as file:
+		data = pickle.load(file)
+		print(data)

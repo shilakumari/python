@@ -1,0 +1,194 @@
+1. Exception Handling
+	Try-except
+	Raise
+	Assert:
+		When assert conditoion is false, error will be thrown. 
+		a=10
+		assert a=10 #No error
+		assert a==100 #AssertionError
+	Custom Exceptions
+
+2. Inbuilt Error
+	Ex 1:
+	return "Hello" #SyntaxError
+
+	Ex 2:
+	def m1():
+	return "Hello" #IndentationError
+
+	Ex 3:
+	test = 1/0 #ZeroDivisionError
+
+	Ex 4:
+	print(x) #NameError
+
+3. try-except
+	Ex 1:
+	try:
+		print(1/x)
+	except ZeroDivisonError:
+		print("You cannot divide a value with zero")
+	except:
+		print("Something else went wrong") 
+
+	Ex 2:
+	try:
+		with open('data.csv') as f:
+			read_data = f.read()
+	except FileNotFoundError as fnf_error:
+		print(fnf_error)
+		print("Explanation: we cannot load the 'data.csv' file")
+		
+	Ex 3:
+	try:
+		result=1/3
+	except ZeroDivisionError as err:
+		print(err)
+	else:
+		print(f"Your answer is {result}")
+
+	Ex 4:
+	def divide(x,y):
+		try:
+			result = x/y
+		except ZeroDivisionError:
+			print("Please change 'y' argument to non-zero value")
+		except:
+			print("Something went wrong")
+		else:
+			print(f"Your answer is {result}")
+		finally:
+			print("Code by Illustration")
+	divide(10,5)
+	o/p: Your answer is 2
+		Code by Illustration
+
+4. raise
+	Ex 1:
+	value = 2_000
+	if value>1_000
+		#raise the ValueError
+		raise ValueError("Please re-enter a value lower than 1000")
+	else:
+		print("Congratulations! You are the winner!!!")
+
+	Ex 2:
+	def divide(a,b):
+		if b<0:
+			raise ZeroDivisionError("Division by negative number is not allowed")
+		return a/b
+
+5. Custom Exception
+	Ex 1:
+	class DivideByNegativeNumber(Exception):
+		def __init__(self, message, err_code):
+			super().__init__(message)
+			self.err_code = err_code
+		def __str__(self):
+			return f"{self.message} (Error Code: {self.err_code})"
+	def divide(a,b):
+		if b<0:
+			raise DivideByNegativeNumber("Division by negative number is not allowed")
+		return a/b
+
+6. Magic Function
+	1. __init__
+	2. __str__
+
+FILE HANDLING
+7. File Handling
+	'w' to write in the file.
+	To create and write into a file use write().
+		f=open("sample.txt","w")
+		f.write("Hello, World!")
+		f.close()
+	'r' to read from the file.
+	To read from file use read(), readline(), readlines().
+		f=open("sample.txt","r")
+		content=f.read()
+		print(content)
+		f.close()
+	'a' to append in the file.
+		f=open("sample.txt","a")
+		f.write("Have a nice day.")
+		f.close()
+
+8. File Handling Using "with"
+	We don't need to close file explicitly.
+	with open("sample.txt","r") as f:
+		content = f.read()
+		print(content)
+
+SERIALIZATION
+9. Serialization
+	The process of converting the object into a format that can be stored and transmitted.
+	Ex 1:
+		import pickle
+		#test object
+		t={"hello":"world"}
+		with open("datas.pickle","wb") as f:
+			pickle.dump(t,f)
+		with open("datas.pickle","rb") as f:
+			data = pickle.load(f)
+			print("Reconstructed data ",data)
+	Deserialization:
+		Getting back original data called deserialization.
+
+
+10. Concurrency and Multithreading
+	Thread-based concurrency
+	Ex 1:
+	import threading
+	import time
+	def print_nums():
+		for i in range(1,6):
+			print(f"Prining number {i}")
+			time.sleep(1) #simulate a delay of 1 second
+	def print_letters():
+		for letter in 'Geeks':
+			print(f"Prining letter {letter}")
+			time.sleep(1) #simulate a delay of 1 second
+	# Create two thread objects, one for each function
+	t1 = threading.Thread(target=print_nums)
+	t2 = threading.Thread(target=print_letters)
+	# Start the threads
+	t1.start()
+	t2.start()
+	# The main thread waits for both threads to finish
+	t1.join()
+	t2.join()
+	print("Both threads have finished")
+
+	Process-based concurrency
+	import multiprocessing
+	import time
+	start_time=time.time()
+	def square(x):
+		return x*x
+	if __name__=="__main__":
+		nums=[1,2,3,4,5]
+		# Create multiprocessing pool
+		with multiprocessing.Pool() as pool:
+			results=pool.map(square, nums)
+		# Print the results
+		print(results)
+	end_time=time.time()
+	execution_time=end_time-start_time
+	print(f"Execution time: {execution_time} seconds")
+
+11. Generics and functional programming
+	Syntax:
+		lambda arguments:expression
+	Ex 1:
+		s1="Masai Program"
+		s2=lambda x:x.upper()
+		print(s2(s1))#MASAI PROGRAM
+	Ex 2:
+		from tying import TypeVar,List
+		u=TypeVar('u')
+		v=TypeVar('v')
+		def combine(a:u, b:v):
+			return str(a)+str(b)
+		print(combine(10,20)) #1020
+		print(combine('abc','def')) #abcdef
+		print(combine(2.0,3.0)) #2.03.0

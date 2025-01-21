@@ -1,0 +1,283 @@
+MULTI-CHOICE QUESTIONS
+1. What will be the output of the following code?
+if 5>3:
+	print("A")
+else:
+	print("B")
+print("C")
+a)A
+b)AC
+c)B
+d)BC
+Ans:1.b)
+
+2. Which is not a valid python variable name?
+a)my_var
+b)_myvar
+c)2myvar
+d)myVar
+Ans:2.c)
+
+3. What happens when identation is not currect in Python?
+a)Code runs but gives unexpected output.
+b)An IndentationError is raised
+c)Code executes, ignoring the incorrect indentation.
+d)A SyntaxError is raised.
+Ans:3.b)
+
+OPERATORS
+4. What is the output of the following code?
+a=10
+b=4
+c=a//b
+print(c)
+a)2.5
+b)2
+c)2.0
+d)Error
+Ans:4.b)
+
+5. What is the result of the following code?
+x=7
+y=2
+print(x%y==1 and x//y==3)
+a)True
+b)False
+c)Error
+d)None
+Ans:5.a)
+
+6. What does the following code do?
+a=5
+a **= 2
+a) Sets a to 10
+b) Sets a to 25
+c) Sets a to 2
+d) Produces an error.
+Ans: 6.b)
+
+7. What is the output of this code?
+x=10
+y=3
+print(x//y*y+x%y) #10//3=3,3*3=9,10%3=1, 9+1=10
+a)10
+b)3
+c)30
+d)13
+Ans:7.a)
+
+8. What is the output of the following code?
+a=5
+b=a**2//2+a%2
+print(b) # 5**2=25, 25//2=12, 5%2=1, 12+1=13
+a)12
+b)14
+c)13
+d)10
+Ans:8.c)
+
+9. What happens when you use a comparison operator between a string and an integer?
+a)Return True if the string can be converted to an integer.
+b)Return False always
+c)Raises a TypeError.
+d)Raises a ValueError.
+Ans:9.c)
+
+10. What is not a valid Python data type? 
+a)str
+b)tuple
+c)bool
+d)constant
+Ans:10.d)
+
+11. If the user inputs "123abc" in the following code, what happens?
+x=int(input("Enter a number: "))
+print(x)
+a)Prints "123abc".
+b)Raises a ValueError.
+c)Prints 123.
+d)Prints abc.
+Ans:11.b)
+
+12. Which operator has the highest precedence?
+a)and
+b)or
+c)not
+d)==
+Ans:c)
+
+PRECIDENCE ORDER
+1.What is the output of the following code?
+x=7 #Binary: 0111
+y=12 #Binary: 1100
+print(x&y) 
+
+2. What is the output of the following code?
+x=8 #1000
+y=3 #0011
+print((x>>y) | (x<<y)) #(x>>y) = 8/(2^3)=1 that is 0001,8*(2^3)=64 that is 
+a)65
+b)1
+c)104
+d)0
+Ans:2.a)
+
+3. What does this print?
+a=15 #1111
+print(~a & 0b1111) #(-0b10000 & 0b1111)
+a)15
+b)0
+c)1
+d)-1
+Ans:3.b)
+
+4. Evaluat this expression
+x=5 #0101
+y=6 #0110
+z=x^y #(0101^0110 = 0011) = 3
+print(z<<2) #(3*(2^2))
+a)12
+b)20
+c)8
+d)24
+Ans:4.a)
+
+5. What wii be the output of the following code?
+x=8 #1000
+y=~x #-9
+print(y>>1) # -9/(2^1)
+a)-5
+b)-4
+c)-3
+d)-8
+Ans:5.a)
+	Explination:
+	if positive value 9 then 9/2 = 4.5 = 4
+	if negative value -9 then -9/2 = -4.5 = 5
+
+6. Wich of the following will produce 0?
+a=7 #0111
+b=8 #1000
+a)a&b
+b)a|b
+c)a^b
+d)~a
+Ans:6.a)
+
+7. What will the following produce?
+a=15 #1111
+b=4 #0100
+print((a|b)>>2) #(1111|0100=1111=15), (15>>2)=15/2^2=3
+a)6
+b)7
+c)3
+d)5
+Ans:7.c)
+
+8. What is output of the following code?
+print(5 and 0 or 3)
+a)5
+b)0
+c)3
+d)Error
+Ans:8.c)
+Explaination:
+	5 and 0 -> 0(because and returns the first falsy value).
+	0 or 3 -> 3(because or returns the first truthy value).
+
+9. Whta is the output of this code?
+x=0b1010
+y=0b1100
+print(bin(x&y)) #0b1000
+a)0b1000
+b)0b1010
+c)0b1100
+d)0b1110
+Ans:9.a)
+
+10. Which of the following correct in order to operator precedence?
+a)+>**>//
+b)**>*>+
+c)+>*>**
+d)*>+>**
+Ans:10.b)
+
+11. What is the output of the following code?
+a=7
+b=3
+print(a%b+a//b*b) #(a//b=2, 2*b=6), a%b=1, 1+6=7
+a)3
+b)7
+c)10
+d)5
+Ans:11.b)
+
+12. What happens when you run the following code?
+x=input("Enter a number: ")
+y=x*2
+print(y)
+User enters 10.
+a)1010
+b)20
+c)Error
+d)10 10
+Ans:12.a)
+
+13. Which of the following will raise a ValueError?
+a)int("42")
+b)int("42.5")
+c)float("42.5")
+d)float("42")
+Ans:13.b)
+Explaination:
+	int() cannot convert a string containing a decimal point.
+
+14. What is the output of the foolowing code?
+x="abc"
+print(x.isdigit())
+a)True
+b)False
+c)Error
+d)None
+Ans:14.b)
+
+15. What is the output of the following code?
+a=12
+b=4
+print(a>>b)
+a)3
+b)1
+c)0
+d)Error
+Ans:15.c)
+
+16.What is the output of the following code?
+print(5=="5")
+a)True
+b)False
+c)Error
+d)None
+Ans:16.b)
+Expaination:
+	Python compares values and types, int and str cannot be equal.
+
+17. What does this code print?
+print(5+2*3-4**2//2)
+a)1
+b)3
+c)-1
+d)5
+Ans:17.b)
+
+TRUE/FALSE
+1. A variable must always be declared before assigning a value in Python.
+	False. In Python no need to declare before assigning a value to variable.
+2. The expression a=a+1 can also be written as a a += 1.
+	True.
+
+FILL-IN-THE-BLANKS
+1. The result of the expression 7 & 3 in binary is --0011-- and in decimal it is --3--.
+2. The --input()-- function in Python is used to get user input. It always returns a --string--.
+3. The operator --%-- is used to calculate the remainder in Python.
+4. To define multi-line comment in Python, you can use --'''-- or --"""--.
+

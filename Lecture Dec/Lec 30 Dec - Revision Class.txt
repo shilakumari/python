@@ -1,0 +1,152 @@
+FIRST REVISION CLASS - PART 1
+	SUBTOPICS:
+	Introduction to programming (Basic Concepts, Setting up Environment, First Program).
+	Basic Syntax (Indentation, comments).
+	Variable & Data types (Primitive type, Constants, Type Casting).
+	Operators (Arithmetic, Relational, Logical, Assignment).
+	Input in python (Input function, Basic validation).
+	
+OFFICIAL WEBSITE - python.org/
+1. Python Programming
+	It's an open source, high-level, interpreted programming language known for simplicity and readability.
+	Uses In:
+		Web development
+		Data analysis
+		Desktop GUI application
+		Enterprise application
+		Console Based application
+		Software development
+		Audio or Video-Based application
+		3D CAD application
+		Image Processing application
+		Gaming
+		Scientific Computing & Numeric
+		AI(Artificial Inteligence)
+		Robotics
+		ML(Machine Learning) and more.
+	Python Code:
+	Ex 1:
+		hello.py
+			print("Hello World!")
+		Run it using:
+			python hello.py
+
+2. Basic Syntax
+	i. Indentation
+		Each block of code within a same structure like loop or functions must have same identation level.	
+	ii. Comments
+		Single Line with #
+		Multi-line with ''' or """
+
+3. Variables
+	Variables are containers for storing data value.
+	Python is dynamically-typed, meaning we don't need to declare the type of variable explicitly.
+	Camel-case - Ex: myVar
+	Snake-case - Ex: my_var
+	Ex 1:
+	x=10 #Integer
+	y="Python" #String
+	z=3.14 #float
+
+4. Data types
+	Built-in data types:
+	Primitive Data Type:
+		1. Integer(int) (Ex: 1, 100, -42)
+		2. Float(float) (Ex: 3.14, -2.5)
+		3. String(str) (Ex: name="Shila")
+	Other Common Data Types:
+	1. List:
+		Ordered, mutable collections of items. (Ex: l=[1,2,3])
+	2. Tuple:
+		Ordered, immutable collection of items. (Ex: t1=(1,2,3))
+	3. Dictionary:
+		Key-Value pairs> (Ex: d1={"greet":"Hello"}) 
+	4. Set:
+		Unordered collections of unique items. (Ex: set1 = {1,2,3})
+
+5. Constants
+	Python don't have built-in support for constants, but naming conventions(all capital letters)
+	Ex 1: 
+		PI=3.14159
+	
+6. Type Casting
+	Convert one type to another.
+	Ex 1:
+	x=10 #Integer
+	y=float(x) #Float
+	print(y) #10.0
+	a="123" #String
+	b=int(a) #Integer
+	print(b) #123
+
+7. Identifier Naming
+	The variable first character must be unerscore(_) or alphabet.
+	Name of identifiers are case-sensitive.
+
+
+FIRST REVISION SESSION - PART 2
+1. Operators 
+	Used to perform operations on variables and values.
+	Arithmetic Operators
+		+,-,*,/(Division),//(Floor Devision),%,**(Exponentiation)
+	Relational(Comparison) Operators
+		==,!=,>,<,>=,<=
+	Logical Operators
+		:Used to combine conditional statements.
+		and,or,not
+	Assignment Operators
+		:Used to assign values to variables and modify them.
+		=,+=,-=,*=,/=,//=,%=,**=
+
+
+2. Bitwise Operators
+	Used to operform operations on binary numbers at the bit level.
+	&(Bitwise AND)
+		Ex 1: print(5&3)#1 :- (0101 & 0011 = 0001) 
+	|(Bitwise OR)
+		Ex 1: print(5|3)#7 :- (0101 | 0011 = 0111)
+	^(Bitwise XOR)
+		Ex 1: print(5^3)#6 :- (0101 ^ 0011 = 0110)
+	~(Bitwise NOT)
+		Ex 1: print(~5)#-6 :- (Inverts all bits)
+	<<(Left-shift, multiple by 2^n)
+		Ex 1: print(5<<1)#10 :-(5*(2^1)) or (0101 -> 1010)
+	>>(Right-shift, divide by 2^n)
+		Ex 1: print(5>>1)#2 :-(5/(2^1)) or (0101 -> 0010)
+	print(bin(64))
+	print(int(0b1000000))
+
+
+3. Precedence Order of All operators
+	1	() - Parentheses
+	2	** - Exponentiation
+	3	+x,-x,~x, - Unary Operations
+	4	*,/,%,//
+	5	+,-
+	6	<<,>>
+	7	&
+	8	^
+	9	|
+	10	==,!=,<,>,<=,>=
+	11	not
+	12	and
+	13	or
+	14	=,+=,-=,etc.
+	
+	Sort form: (P->E->UO->AO->SO->BO->CO->LO->AO)	pe u os bc la
+
+4. input() in Python	
+	The function is use to accept user input in Python. By default, it reads data as a string.
+	We can process or validate the input as required.
+	Syntax:
+	variable = input(prompt)
+		prompt: A message displayed to the user
+	Example:
+	name=input("Enter your name")
+	print(f"{name}")
+
+
+
+
+
+

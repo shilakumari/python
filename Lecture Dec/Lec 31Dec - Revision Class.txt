@@ -1,0 +1,183 @@
+SUBTOPICS:
+	Conditional Statements(if,else,elif, nested conditions, ternary operator)
+	Loops(for, while, loop control:break, continue)
+	Lists(Creating, basic methods, List comprehensions)
+	Strings(Basic operations, methods, immutability)
+
+1. Condition Statement
+	Conditional statements allow control over which parts of code execute based on specific conditions.
+	They are the foundation of decision making.
+	Such as if, elif, else.
+	Ex 1:
+		x=3
+		if x>5:
+			print("x is greater than 5")
+		else:
+			print("x is not greate than 5")
+		o/p: x is not greate than 5
+
+2. Ternary Operator
+	A shorthand for if-else statemnets used for assignments or expressions.
+	Syntax:
+		value = true_expression if condition else false_expression
+ 	Key-point:
+		Used when only a single statement is needed.
+		Not suitable for complex decision making.
+	Ex 1:
+		x=15
+		result="Even" if x%2==0 else "Odd"
+		print(result)#Odd
+
+3. Special point
+	Logical Operators
+		Combine multiple conditions using and, or, not.
+		Ex:
+		if x>0 and x<10:
+		print("x is between 0 and 10")
+	Truthy and Falsy Value:
+	In Python, non-zero numbers, non-empty strings, and non-empty list are considered True.
+	0, None, False, empty strings("") and empty collections are considered False.
+
+4. Loops in Python
+	It allow repetive execution of a block code.
+	i. For loop:
+		The for loop iterates over a seuence(list, tuple, string, range etc.)
+		Syntax:
+		for variable in sequence:
+			#code to execute for eaxh element in the sequence
+		Ex 1:
+		fruits = ["Apple","Banana","Cherry"]
+		for fruit in fruits:
+			print(fruit)
+		Ex 2:
+		for i in range(1,6):
+			print(i)#Prints numbers 1 to 5
+	for-else loop:
+		The else clause in loop runs if the loop completes normally (i.e., no break is encountered).
+
+	ii. While loop:
+		The While loop continues as long as a condition is true.
+		Syntax:
+		While condition:
+			#Code to execute while condition is true
+		Ex 1:
+		count=5
+		while count>0:
+			print(count)
+			count -= 1#Decrement to avoid infinite loop
+
+5. Loop Control Statements
+	break:
+		It immediately exits the loop, regardless of the condition.
+	Ex:
+	for j in range(10):
+		if j==5:break
+		print(j)Stops printing when j==5
+
+	continue:
+	skips the corrent iteration and proceeds with the next.
+	Ex:
+	for j in range(5):
+		if j==3:continue
+		print(j) #Skips printing 3
+
+	pass:
+	The pass statement is a placeholder that does nothing.
+	Ex:
+	for j in range(3):
+		pass #Placeholder for future code
+	print("Loop ended.")
+
+6. Uses of Loops
+	Data Processing:
+		Iterate through row in a dataset for analysis.
+	Automation:
+		Sending multiple emails, generating reports.
+	Gaming:
+		Check player actions in real-time.
+	Simulations:
+		Simulate weather patters, traffic, etc.
+	Web scraping:
+		Crawl through websites to extract data.
+
+
+LIST
+7. List
+	Empty List:
+		empty_list=[]
+	Creating List:
+		list1=[1,2,3,"hello World",46,3]
+	Accessing List Elements:
+		Syntax:
+		list_name[index]
+		Ex 1:
+		l1=[1,2,"Hello World",[5, 6]]
+		print(l1[0])#1
+		print(l1[-1])#[5,6]
+
+8. List operations
+	a. Length of a list
+		len(list_name)
+	b. Slicing a list
+		list_name[start:end:step]
+		Ex:
+		nums=[1,2,3,4,5]
+		print(nums[1:4])#[2,3,4]
+		print(nums[::-1])#[5,4,3,2,1]
+	c. Membership Testing
+		Syntax:
+		element in list_name #returns true if the elements exits in the list.
+		Ex:
+		nums=[1,2,3,4,5]
+		print(1 in nums)#True
+
+9. List Comprehensions
+	It's a concise way to create lists.
+	Syntax:
+		new_list=[expression for item in iterable if condition]
+	Ex:
+		squares=[x**2 for x in range(1,6)]#[1,4,9,16,25]
+
+10. List Methods
+	append(), extend(), insert(), remove(), pop(), index(), count(), reverse(),sort(),clear()
+
+	List are mutable.
+	It supports heterogeneous elements.
+	Use copy() for a shallow copy to avoid modification to the original list.
+
+
+STRING
+11. String in Python
+	It's a sequence of characters enclosed in single quotes(') or double quotes(").
+	String is most commonly used data types in Python for working with text data.
+	Operations:
+		a. Creating
+			#Single line string
+			s1="Hello, World!"
+			#Multi-line string
+			s2="""This is a
+				multi-line string."""
+		b. Accessing Characters
+			Ex:
+			text="Python"
+			print(text[0])#P
+		c. Slicing
+			Ex: text="Programming"
+			print(text[0:5])#Progr
+		d. Concatenation
+			Combine string using + operator.
+		e. Membership Testing
+			print("Py" in "Python")#True
+		f. Repetition
+			repeat = "Hi"*3
+			print(repeat)#HiHiHi
+
+12. String Method
+	lower(), upper(), title(), strip(), replace(), split(), join(), find(), count(), 
+	startswith(), endswith()
+
+13. String Immutability
+	Strings in Python are immutable, meaning their contents cannot be changed after creation.
+	Ex:
+	text="Hello"
+	text[0]="h" #Raises a TypeError

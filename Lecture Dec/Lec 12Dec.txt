@@ -1,0 +1,234 @@
+Exception Handling in Python
+	Implementing robust Error Handling Mechanism.
+	(Robust means doesnot affect)
+1. What are exceptions?
+	Exceptions are events that occur during program execution that disrupt the normal flowof execution.
+	Purpose:
+	They help identify and handle errors gracefully without crashing the program.
+	Analogy:
+	Think of exceptions as unexpected roadblocks on a journey, exception handling is lilke having a detour plan ready.
+
+2. Why handle Exceptions?
+	User Experience:
+		Prevents program from crashing unexpectedly.
+	Debugging:
+		Provides insights into what went wrong.
+	Resource Management:
+		Ensures resources like files or network connections are properly closed.
+	Ex:
+	try:
+		a=2
+		b=a+c
+	except:
+		print("Something wrong above")
+	o/p:Something wrong above
+
+3. The try and except Blocks
+	Ex 1:
+	try:
+	    numerator=int(input("Enter numerator:"))
+	    denominator=int(input("Enter denominator"))
+	    result=numerator/denominator
+	    print("Result:",result)
+	except:
+	    print("An error occurred.")
+
+	Ex 2:
+	try:
+		a=abbcd
+	except:
+		b=abbcd
+	o/p:
+	a=abbcd, NameError: name 'abbcd' is not defined
+	b=abbcd, NameError: name 'abbcd' is not defined
+
+	Ex 3:
+	try:
+		a=abbcd
+	except:
+		b=abbcd
+	except:
+		c=1
+	o/p: SyntaxError: default 'except:' must be last
+
+4. Catching Specific Exception
+	try:
+		#code that might raise an exception
+	except ExceptionType:
+		#code to execute for this specific exception
+	This Allow handling different exception differently.
+
+5. Handling Multiple Exceptions
+	Ex 1:
+	try:
+	    file=open('data.txt','r')
+	    data=file.read()
+	    number=int(data)
+	except FileNotFoundError:
+	    print("File not found.")
+	except ValueError:
+	    print("Could not convert data to an integer.")
+	o/p: File not found.
+
+	Ex 2:
+	try:
+	    #f=open("abc.txt")
+	    a=3/0
+	except FileNotFoundError:
+	    print("file not there")
+	except:
+	    print(2)
+	o/p:2
+
+6. Creating file in the current folder
+	f=open("hello.txt","w")
+	f.write("hello\n")
+	f.close()
+	
+	Ex 1:
+	try:
+	    f=open("hello.txt")
+	    a=int("hi")
+	except (FileNotFoundError,ValueError):
+	    print("file not there or value error")
+	#o/p:file not there or value error (because of line, a=int("hi"))
+
+7. The else clause in exceptions
+	Syntax:
+	try:
+		#code that might raise an exception
+	except ExceptionType:
+		#Code to execute if exception occurs
+	else:
+		#code to execute if no exception occurs
+	Run code only if no exceptions were raised.
+
+	Ex:
+	try:
+	    n=int(input("Enter a number:"))
+	except ValueError:
+	    print("That's not a valid number!")
+	else:
+	    print("You entered:",n)
+	#o/p:Enter a number:12
+	#You entered: 12
+
+8. Raising Exceptions with raise
+	Syntax:
+		raise ExceptionType("Error message")
+	manually trigger an exception when a certain condition occurs.
+
+9. Raising Exceptions with raise
+	Example:
+	age=int(input("Enter your age:"))
+	if age<0: raise ValueError("Age cannot be negative!")
+	else: print("Your age is:",age)
+	#o/p:
+		#Enter your age:23
+		#Your age is: 23
+
+9. Takeaways
+	Exceptions:
+		Mechanism for handling runtime errors.
+	try,except,else,finally:
+		Control flow exception for exception handling.
+	Custom exceptions:
+		User-defined exceptions for specific error cases.
+
+	(Next file handling and serialization in python)
+
+Lec 13Dec
+1. Many Exceptions
+	Ex:
+	try:
+	    print(x)
+	except ValueError:
+	    print("Variable x is not defined")
+	except:
+	    print("Something else went wrong")
+	#o/p: Something else went wrong
+
+2. else:
+	We can use else keyword to define a code block to be executed if no errors were raised.
+	Ex 1:
+	try:
+		print("Hello")
+	except:
+		print("Something went wrong")
+	except:
+		print("Nothing went wrong")
+	#o/p: Hello
+	Nothing went wrong
+
+	Ex 2:
+	try:
+	    print("")
+	    try:
+	        print(2/0)
+	    except ZeroDivisionError:
+	        print("Divide by zero s not valid")
+	except ValueError:
+	    print("Variable c is not defined")
+	except:
+	    print("Something else went wrong")
+	#o/p: Divide by zero s not valid
+
+3. Python error handling
+	try:
+	The try block lets you test a block of code for errors.
+	except:
+	The except block lets you handle the error.
+	else:
+	The else block lets you execute code when there is no error.
+
+4. finally
+	The finally block, if specified will be executed regardless if the try block raise an error or not.
+	try:
+	    f=open("hello.txt","w")
+	    try:
+	        f.write("I am writing")
+	        data=f.read()
+	        print(data)
+	    except:
+	        print("Something went wrong when writing to the file")
+	    finally:
+	        f.close()
+	except:
+	    print("Something went wrong when opening to the file")
+
+	Getting data from the file: 
+		f1=open("hello.txt","r")
+		data=f1.read()
+		print(data)
+		f1.close()
+
+5. Raise An Exception
+	x = -1
+	if x<0:
+		raise Exception("Sorry, no numbers below zero")
+	#o/p:Exception: Sorry, no numbers below zero
+
+6. Defining a custom Exception
+	Ex:
+	class NegativeDivisionFault(Exception):
+	    #Exception raised for custom error in the application.
+	    def __init__(self,message,error_code):
+	        super().__init__(message)
+	        self.error_code=error_code
+	    def __str__(self):
+	        return f"{self.message} (Error Code: {self.error_code})"
+	def divide(a,b):
+	    if b<0:
+	        raise NegativeDivisionFault("Division by zero is not allowed",100)
+	    return a/b
+
+	d = divide(5,-1)
+	print(d)
+	#o/p:
+	#raise NegativeDivisionFault("Division by zero is not allowed",100)
+	#NegativeDivisionFault: <exception str() failed>
+
+	d = divide(5,0)
+	print(d)
+	#o/p:
+	#ZeroDivisionError: division by zero

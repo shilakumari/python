@@ -1,0 +1,69 @@
+1. Method Resolution Order (MRO)
+	The MRO is the order in which Python looks up methods.
+	For Car(Engine, Radio), the order is:
+		Car->Engine->Radio->object.
+	The first class that has the method is the one Python uses.
+	Ex:
+	class Engine:
+    		def start(self):print("Engine starting.")
+	class Radio:
+	    	def start(self):print("Radio playing.")
+	class Car(Engine,Radio):
+	    	pass
+	c1=Car()
+	c1.start()#Engine starting.
+
+2. Check the MRO
+	This shows the order Python follows.
+	Method:
+		__mro__
+	Ex:
+	print(Car.__mro__)
+	#o/p:(<class '__main__.Car'>, <class '__main__.Engine'>, <class '__main__.Radio'>, <class 'object'>)
+
+
+*****Class Activity*****
+Create WaterVehicle, with move() method:prints "Moving on water".
+Create AirVehicle with move() method: print "Moving in air".
+Create Overcraft(WaterVehicle,AirVehicle) and call move().
+Observe:
+Which move() method is called first?
+Check the MRO to understand why?
+	class WaterVehicle:
+	    def move(self):
+	        print("Moving on water.")
+	class AirVehicle:
+	    def move(self):
+	        print("Moving in air.")
+	
+	class HoverDraft(WaterVehicle,AirVehicle):
+	    pass
+	hc=HoverDraft()
+	hc.move()#Moving on water.
+	print(HoverDraft.__mro__)
+	#(<class '__main__.HoverDraft'>, <class '__main__.WaterVehicle'>, <class '__main__.AirVehicle'>, <class 'object'>)
+
+
+3. Late Binding Example
+	class Greater:
+	    def greet(self):
+	        print("Hello")
+	g=Greater()
+	g.greet()#Hello
+
+	def new_greet(self):
+	    print("Hi there!")
+
+	#Change greet() method at runtime
+	Greater.greet=new_greet
+	g.greet()#Hi there!	
+
+4. Summary (Takeaways)
+	Interfaces:
+		Like a contract- ensures classes have certain methods.
+		In Python, use ABC's or Duck Typing.
+	Multiple Inheritance:
+		A class inherit from more than one parent.
+		Python uses MRO to decide which method to call.
+	Late Binding:
+		Python decides at runtime which method to call, allowing changes to methods even after objects are created.

@@ -1,0 +1,211 @@
+1. OOP (Object Oriented Programming)
+	oop is a programming paradigm that uses "objects" to represent data and functionality.
+	Each object can contain: attributres and methods.
+	Properties:
+	Object
+	class
+	Encapsulation
+	Abstraction
+	Inheritance
+	Polymorphism
+
+2. Class
+	A class is a blueprint for creating objects, defining the structure, attributes and behaviours that objects of that type will have.
+
+	Ex 1:
+	class Car:
+		def __init__(self,name,model):
+			self.name=name
+			self.model=model
+
+3. Objects
+	An instance of a class, representing individual "real-world" entities created based on the class blueprint.
+
+4. Constructor, self
+	Constructor:
+		A special method __init__ that initializes attributes when an object is created.
+	self:
+		Refers to the current instance and allows accessing  attributes and methods.
+
+5. Instance,class,static methods
+	Instance Methods:
+		Operate on instances of the class and can only modify instance attributes.
+	Class Atrributes:
+		Shared accross all instances, defined within the class but outside __init__.
+	Class Methods:
+		Use @classmethod and cls parameter to modify class-level attributes.
+	Static methods:
+		Use @staticmethod decorator.
+		Do not access or modify any class or instance data and are used like regular functions but belong to the class.
+
+	Ex 1:
+	class  DemoExample:
+		#class attribute
+		class_count = 6
+
+		def __init__(self,make,model):
+			self.name=name
+			self.model=model
+
+		#class method
+		@classmethod
+		def m1(cls,new_count):
+			cls.class_count = new_count
+
+		#instance method
+		def m2(self):
+			print("Instance Method Called")
+
+		#static method
+		@staticmethod
+		def m3():
+			print("Static Method Called")
+
+		
+6. Inheritance
+	Code reusability
+	Logical hierarchies
+	1. Single Inheritance
+		class Parent:
+			#code
+		class child(Parent):
+			#code
+	2. multiple Inheritance
+		class Parent1:
+			#code
+		class Parent2:
+			#code
+		class child(Parent1, Parent2):
+			#code
+	3. Multi-level Inheritance
+		class GrandParent:
+			#code
+		class Parent(GrandParent):
+			#code
+		class Child(Parent):
+			#code
+	4. Hierarchical Inheritance
+		class Parent:
+			#code
+		class child1(Parent):
+			#code
+		class child2(Parent):
+			#code
+		class child3(Parent):
+			#code
+		
+7. MRO (Method Resolution Order)
+	In case of conflicting methods, Python uses the MRO to decide which parent's method gets priority.
+
+8. super()
+	Ex 1:
+	class Emp:
+		def __init__(self, name, age):
+			self.name=name
+			self.age=age
+	class Freelance(Emp):
+		def __init__(self, name,age,email):
+			super().__init__(name,age)
+			self.email=email
+	emp1 = Freelance("Shila", "28", "12345@gmail.com")
+	print("name",emp1.name) #Shila
+	print("age",emp1.age) #28
+	print("email", emp1.email) #12345@gmail.com
+
+9. Private Method
+	method-name started with double under-score.
+	Ex: def __m1():
+		#code
+
+10. Protected Method
+	method-name started with single under-score.
+	Ex: def _m1():
+		#code
+
+11. Interface
+	A collection of method signatures that should be provided by the implementing class.
+	Use "ABC" class from "abc" module (Abstract Base Class).
+	Ex:
+	from abc import ABC, abstractmethod
+	class Animal(ABC):
+		@abstractmethod
+		def speeks(self):
+			pass
+	class Dog(Animal):
+		def speeks(self):
+			print("Woof!")
+	d1 = Dog()
+	d1.speeks() #Woof!
+
+12. Duck Typing (Flexibility Over Formality)
+	If it looks like a duck, swims like a duck, and uacks like a duck, it's probably a duck.
+	In Python, if an object has the method we need, 
+	we can use it even if it doesn't formally inherit from a specific interface.
+	Ex 1:
+	class Duck:
+		def quck(self):
+			print("Quck")
+	class Person:
+		def quck(self):
+			print("Quck too")
+	def mak_quck(obj):
+		obj.quck() #work as long as object has quck
+	mak_quck(Duck()) #Quck
+	mak_quck(Person()) #Quck too
+
+13. Late Binding
+	Python uses late binding.
+	Ex1:
+	class Greet:
+		def say(self):
+			print("Hello")
+	g=Greet()
+	g.say() #Hello
+
+	#Dynamically replacing the method
+	def new_say():
+		print("Hello Everyone")
+	g.say = new_say
+	
+	g.say() #Hello Everyone
+
+14. Encapsulation
+	Binding function and attributes into a single unit, typically a class.
+
+15. Access Modifiers
+	Public:
+		Can be accessed directly by any class.
+	Protected:
+		can be accessed within the same class it is declared and its subclass.
+	Private:
+		Can be accessed only within the same class.
+
+	Ex 1:
+	class Public:
+		def __init__(self):
+			self.name="John" #Public 
+		def display_name(self):
+			print(self.name)
+	obj=Public()
+	#Accessible
+	obj.display_name() #John
+	print(obj.name) #john
+	
+	Ex 2:
+		class Protected:
+			def __init__(self):
+				self._age = 30 #Protected
+		class SubClass(Protected):
+			def display_age(self):
+				print(self._age)#Accessible in subclass
+		obj=SubClass()
+		obj.display_age() #30
+	Ex 3:
+		class Private:
+			def __init__(self):
+				self.__salary=50000
+			def salary(self):
+				return self.__salary #Access through public method
+		obj=Private()
+		print(obj.salary())#50000
+		#print(obj.__salary)#Raises AttributeError

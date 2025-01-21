@@ -1,0 +1,99 @@
+1. Nested Loop
+	Nested loops mean loops inside a loop.
+	Syntax:
+	Outer_loop Expression:
+		Inner_loop Expression:
+			Statement inside Inner_loop
+		Statement inside Outer_loop
+	Ex 1(for-loop):
+	x=[1,2]
+	y=[4,5]
+	for i in x:
+		for j in y:
+			print(i,j)
+	Ex 2(while-loop):	
+	x=[1,2]
+	y=[4,5]
+	i=0
+	while i<len(x):
+		j=0
+		while j<len(y):
+			print(x[i],y[j])
+			j += 1
+		i += 1
+
+2. 2D list
+	Structured like a grid, with rows and columns.
+	Ex: A list representing a tic-tac-toe board.
+	board=[["x","0","x"],
+		["0","x","0"],
+		["x","","0"]]
+
+	List Methods:
+	append(): Add element at last index.
+	extend():
+		list1=[[1,2],["Hi","Hello"],[3,4]]
+		list1[0].extend(["Python","Java"])
+		print(list1) #[[1,2,"Python","Java"],["Hi","Hello"],[3,4]]
+	reverse(): Reverse the list.
+
+3. Dictionary
+	Used to store key-value pairs.
+	It's a collection which is ordered(but insertion order preserved in Python 3.7+),
+		changable, doesnot allow duplicate keys.
+	Ex 1:
+	dict1={
+		"brand"="Ford",
+		"Year"=1930
+	}
+
+	Each key is unique.
+	A value can be anything: a number, string, list, or even another dictionary.
+	Key must be immutable(e.g, strings, numbers, tuples), but value can be of any type.
+
+	Ex 2:
+	#Check if key exists in a Python dictionary
+	#(Using IN operator)
+	d={'a':1,'b':2,'c':3}
+	key='b'
+	print(key in d) #True
+	key='2'
+	print(key in d) #False
+	
+	Ex 3:
+	#Access a value by key:
+	d={'a':1,'b':2,'c':3}
+	val=d['a']
+	print(val) #1
+
+	Ex 4:
+	#Remove a key from dictionary
+	d={'a':1,'b':2,'c':3}
+	del d['a']
+	print(d) #{'b':2,'c':3}
+	#del d['a'] #KeyError - because this key is already deleted.
+
+4. Nested Dictinary
+	A dictionary can contain other dictionary.
+	Ex 1:
+	family={"Parents":{"father":"John","mother":"Jane"},
+		"Children":{"eldest":"Anna","Youngest":"Mike"}}
+	print(family["Parents"]["mother"])#Jane
+
+FUNCTIONS
+5. Function
+	Functions are reusable block of code designed to perform a specific task.
+	Syntax:
+	def fun_name(parameters):
+		#code block
+		return value #optional
+
+6. Lambda functions
+	It's an anonymous functions means function without name.
+	Ex 1:
+	s1='IndianInsituteOfTechnology'
+	s2=lambda func:func.upper()
+	print(s2(s1))#INDIANINSTITUTEOFTECHNOLOGY
+
+7. Some built-in functions
+	 

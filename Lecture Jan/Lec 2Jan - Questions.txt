@@ -1,0 +1,16 @@
+1. What will be the output of the following code?
+for i in range(2):
+	for j in range(2):
+		print(i, j)
+
+2. What is the output of the following code?
+l1=["I am", "You are"]
+l2 = ["healthy","fine","good"]
+l2_size=len(l2)
+for item in l1:
+	print("start outer loop")
+	i=0
+	while i<l2_size:
+		print(item, l2[i])
+		i += 1
+	print("end for-loop")

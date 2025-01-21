@@ -1,0 +1,144 @@
+1. Quick Examples:
+	data=["5","12","Hello","3","world"]
+	result=list(map(lambda x:int(x)*2 if x.isdigit() else len(x), data))
+	print(result)#[10, 24, 5, 6, 5]
+
+	data2=[10,15,20,25]
+	result=list(filter(lambda x:x%2==0, map(lambda x:x-5, data2)))
+	print(result)#[10, 20]
+
+	words=["apple","","banana","","cherry"]
+	filtered = list(filter(lambda x:x.strip()!="", words))
+	print(filtered)
+
+	nums=[-10, 0, 5, 8, -3, 15]
+	result=list(filter(lambda x:x%2==0,map(abs,nums)))
+	print(result)#[10, 0, 8]
+
+	data=[(1,2),(3,4),(5,6)]
+	result=list(map(lambda x: x[0]+x[1],data))
+	print(result)#[3, 7, 11]
+
+	str1=["hello", "world","python"]
+	result=list(map(lambda s:s[::-1].upper(), filter(lambda x: len(x)>5, str1)))
+	print(result)#['NOHTYP']
+
+	funtools MODULE (reduce):
+	from functools import reduce
+	nums=[1,2,3,4,5]
+	result = reduce(lambda x,y: x*y, nums)
+	print(result)#120
+
+	nums2=[10,20,4,45,99]
+	result=reduce(lambda x,y:x if x>y else y,nums2)
+	print(result)#99
+
+2. Concurrency
+	Handling multiple tasks so they overlap in time.
+	Benefit:
+	Your program stays responsive even if one part takes a moment.
+
+3. Sharing Resources Safely
+	Synchronizing threads with locks.
+	Problem:
+		Two threads waiting for the same file = chaos.
+	Solution:
+		A lock ensures only one thread acts at a time.
+
+4. time Module
+import time
+def cal_square(num):
+    print("Calculate the square of the given number")
+    for n in num:
+        time.sleep(0.3)# at iteration, it waits for 0.3 times
+        print("Square is: ",n*n)
+arr=[4,5,6,7,2]
+t1=time.time()#get total time to execute the function
+cal_square(arr)
+print("Total time taken by threads is: ", time.time()-t1)
+
+
+5. Thread with "time" module
+Ex 1:
+	import threading
+	import time
+	def cal_square(num):
+	    print("Calculate the square of the given number")
+	    for n in num:
+	        time.sleep(0.3)# at iteration, it waits for 0.3 times
+	        print("Square is: ",n*n)
+	arr=[4,5,6,7,2]
+
+	t1=time.time()#get total time to execute the function
+
+	thread1=threading.Thread(target=cal_square,args=(arr,))
+	thread1.start()
+
+	#cal_square(arr)
+	print("Total time taken by threads is: ", time.time()-t1)
+	thread1.join()#join() insures that after completion of "thread1" next line should execute
+
+	print("Hi")
+
+Ex 2:  
+	import time
+	import threading
+
+	def task(name,duration):
+	    print(f"Task {name} starting...")
+	    time.sleep(duration)
+	    print(f"Task {name} completed!- Duration:{duration}")
+
+	tasks=[("Task1",3),("Task2",3),("Task3",3)]
+
+	#Sequential execution
+	start_time=time.time()
+	print("Starting sequential execution...")
+	for name, duration in tasks:
+	    task(name, duration)
+	end_time=time.time()
+
+	sequential_time=end_time-start_time
+	print(f"Sequential execution completed in {sequential_time:.2f} seconds\n")
+
+	#Threading execution
+	start_time=time.time()
+	print("Starting thread execution...")
+	threads=[]
+	for t, d in tasks:
+	    th= threading.Thread(target=task, args=(name,duration))
+	    threads.append(th)
+	    th.start()
+
+	#wait for all threads to complete
+	for t in threads:
+	    t.join()
+	
+	end_time=time.time()
+	threaded_time=time.time()
+	print(f"Threaded execution completed in {threaded_time:.2f} seconds\n")
+	print(f"Time saved: {sequential_time-threaded_time:.2f} seconds")
+
+Ex 3:
+	import threading
+	shared_counter=0
+
+	#Function to increment the counter
+	def increment_counter():
+	    global shared_counter
+	    for _ in range(1000):
+	        shared_counter += 1
+
+	#Creating threads
+	threads=[]
+	for _ in range(2):
+	    th=threading.Thread(target=increment_counter)
+	    threads.append(th)
+	    th.start()
+
+	#Waiting for all threads to complete
+	for t in threads:
+	    t.join()
+
+	print(f"Final counter value: ",shared_counter)#Final counter value:  2000
+

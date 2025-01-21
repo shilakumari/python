@@ -1,0 +1,348 @@
+1. Quick Recap: Exception Handling in Python
+	1. Exception:
+		Mechanism for handling runtime errors.
+	2. try, except, else, finally:
+		Control flow structure for exception handling.
+	3. Custom Exceptions:
+		User-defined exceptions for specific error cases.
+	Ex 1:
+		try:
+			int("hi")
+		except ValueError:
+			print("Valerr")
+		except Exception:
+			print("Other err")
+		#o/p:Valerr
+	Ex 2:
+		try:
+			int("hi")
+		except ValueError:
+			print("Valerr")
+		except:
+			print("Other err")
+		#o/p:Valerr
+	Ex 3:
+		def check_age(age):
+	    		if age<0:
+	    		    raise ValueError("Age cannot be negative!")
+	    		return f"Your age is: {age}"
+
+		try:
+			print(check_age(-5))
+		except ValueError as e:
+			print(e)
+		#o/p: Age cannot be negative!
+
+	4. finally syntax
+		try:
+			#code that might raise an exception
+		except:
+			#code to execute if exception occurs
+		finally:
+			#code to execute no matter what
+	Ex 4:
+		try:
+			file=open("data.txt","r")
+			data=file.read()
+		except FileNotFoundError:
+			print("File not found")
+		finally:
+			file.close()
+			print("File closed.")
+	
+	5. Today Topics
+		How to read and write files
+		Working with CSV and JSON
+		Saving Python objects with pickle & json
+
+2. File Handling
+	File Handling = Interacting with files (reading, writing, organizing).
+	Why it matters:
+		Store logs, configuration, analysis results in files.
+
+	Ex 1:
+		f=open("sample.txt","w")#w- write mode
+		f.write("1\n2\n")
+		f.close()
+
+		f1=open("sample.txt","r")#r- read mode
+		data=f1.read()
+		print(data)
+		f1.close()
+		#o/p:
+		    #1
+		    #2
+
+	Ex 2:
+		f2=open("sample.txt","r")
+		f2.write("Hi")
+		#o/p: io.UnsupportedOperation: not writable
+
+3. Reading line by line from file
+	method - 
+		readline():
+			readline() return an empty string if EOF is hit immediately.
+		readline(size):
+			"size" means number of characters in that line.
+	Ex 1:
+		f3=open("sample.txt","r")
+		data=f3.readline()
+		print(data)#1
+		data1=f3.readline()
+		print(data1)#2
+	Ex 2:
+		(In pycharm-console does not suport properly but in spider-console show properly)
+		(below output based on siper-console)
+		f1=open("sample.txt","r")
+		f1.readline(4)#1\n
+		f1.readline(1)#2
+		f1.readline(1)#'\n'
+		f1.readline(1)#''
+		f1.readline(1)#''
+		f1.close()
+		
+4. Opening files with open()
+	open("filename",mode) gives you a file object.
+	Mode:
+		"r": Read
+		"w":Write(overwrite!)
+		"a":Append(add to end)
+
+5. Reading files
+	Methods:
+		f.read()- Entire file
+		f.readlines()- Read entire line of a file when argument empty.
+		for line in f- line by line 
+		f.readlines(lineNumber)- Read number of lines from a file.
+	readlines() convert every line in string form and stored in a list and give list as a output.
+	Ex 1 (readline()):
+		f1=open("sample.txt","r")
+		print(f1.readlines())#['1\n', '2\n', '3\n', '4\n', '5']
+		f1.close()
+	Ex 2 (readlines(lineNum)):
+		f1=open("sample.txt","r")
+		#print(f1.readlines())#['1\n', '2\n', '3\n', '4\n', '5']
+		print(f1.readlines(2))#['1\n', '2\n']
+		print(f1.readlines(3))#['3\n', '4\n']
+		print(f1.readlines(1))#['5']
+		print(f1.readlines(1))#[]
+		f1.close()
+
+	Ex 2 (for line in f):
+		with open("sample.txt") as f:
+    			for line in f:
+    			    print(line.strip())#strip() removes the boundery spaces
+
+6. Writing Files
+	"w": Write(create/overwrite)
+		Use write-mode very carefully, erases previous content.
+	"a":Append(add new data)
+	 
+7. Using "with" statements
+	"with" autometically closes the file.
+	Safer and cleaner code.
+	Ex 1:
+	with open("notes.txt","w") as f:
+    		f.write("Hello World\n")
+	#o/p:
+		Created notes.txt
+			Hello World
+
+	Ex 2:
+	with open("notes.txt","w") as f:
+    		pass
+	#o/p:
+		notes.txt
+			(with empty content, because uses "pass")
+
+	Ex 3:
+	with open("notes.txt","w") as f:
+    		f.write("Hello World\n i got it\n")
+	#o/p:
+		notes.txt
+			Hello World
+			i got it
+
+	Ex 4:
+	with open("notes.txt","a") as f:
+    		f.write("Thank you everyone")
+	#o/p:
+		notes.txt
+			Hello World
+			i got it
+			Thank you everyone
+
+8. Managing Files with os
+	import os module
+	os Module:
+		os.path.exists("file") to check existence
+		os.remove("file") to delete
+	Syntax:
+		import os
+		if os.path.exists(file):
+			 os.remove(file)
+	Ex 1: 
+	import os
+	print(os.path.exists("notes1.txt"))#False
+	if os.path.exists("notes1.txt"):
+	    os.remove("notes1.txt")
+
+	print(os.path.exists(r"notes1.txt"))#False, here r means relative path
+	if os.path.exists(r"notes1.txt"):
+	    os.remove("notes1.txt")
+
+9. Working with CSV (Comma Seperated Value)
+	import csv module
+		csv.reader(file)
+	os.path.exists("file") to check existence
+	os.remove("file") to delete
+	Syntax:
+		import csv
+		with open("notes.txt","r") as f:
+			reader = csv.reader(f)
+			for row in reader:
+				print(row)
+	Ex 1 (with text file): 
+		import csv
+		with open("notes.txt","r") as f:
+			reader = csv.reader(f)
+			for row in reader:
+				print(row)
+		#o/p:
+			['Hello World']
+			['i got it']
+			['Thank you everyone']
+	Ex 1 (with csv file): 
+	Created csv file:
+		f1=open("csv-file.csv","w")
+		print(f1.write("1,2,3\n"))#6, print return number of lines those are adding
+		f1.write("4,5,6\n")
+		f1.close()
+		#o/p:
+			Created csv-file.csv file:
+	    			1,2,3
+	    			4,5,6
+
+		import csv
+		with open("csv-file.csv","r") as f:
+			reader = csv.reader(f)
+			for row in reader:
+				print(row)
+		#o/p:
+			['1', '2', '3']
+			['4', '5', '6']
+
+10. Writing CSV Files
+	csv.write():
+		writerow() writes a list as a row
+		Greate for exporting data to spreadsheets.
+	Ex 1:
+		import csv
+		with open("output.csv","w",newline="") as f:
+			writer=csv.writer(f)
+			writer.writerow(["Name","Score"])
+			writer.writerow(["Alice",90])
+		#o/p: Created output.csv
+			Name,Score
+			Alice,90
+
+11. Introducing to JSON
+	A text format for data exchange (like dictionary, lists)
+	Perfect for web APIs & config files.
+	To write into json file:
+		json.dump(data,f)
+	To read:
+		json.load()
+		Convert JSON back into Python objects.
+		Access data just like dictionaries/lists.
+
+	Ex 1: (creating json file and writing in):
+		import json
+		data={"name":"Bob", "age":25}
+		with open("data.json","w") as f:
+			json.dump(data,f)
+		#o/p: Create data.json
+			{"name": "Bob", "age": 25}
+	Ex 2 (Reading json data):
+		import json
+		with open("data.json","r") as f:
+			info=json.load(f)
+			print(info["name"])#o/p: Bob
+	
+12. File Handling Uses
+	To check existing text file
+	Analysis of data in text file 
+	To calculate the word frequency in a file
+		ex: "the" is 100 times in file
+	like chatgpt are "Language Model". 
+		All these "Language Model" trained on frequencies of word or token.
+	In machine learning: Learning from data
+		 Data is stored in a files.
+
+13. Serialization
+	Definition:
+		Turning a Python object into a storable/sharable format.
+		Later, turn it back into the original object.
+	Why:
+		Save data for future use.
+		Share with others or other programs.
+	Benifits:
+		Persistence: Keep data after program ends.
+		Data Exchange: Share structured data easily.
+		Performance: Cache results to avoid recomputing.
+
+14. Loading from pickle
+	Deserialization:
+		pickle.load() rebuilds the object exactly as it was.
+	Ex 1:
+	import pickle
+	with open("data.pkl","rb") as f:
+		restored=pickle.load(f)
+		print(restored["score"]
+
+15. pickle vs. json
+	Pickle				json
+	Binary format(Python-only)	Text format(Universal)
+	No, Human-Readable		Yes, Human-Readable
+	usecase-Quick save/load		usecase-Data Exchange
+
+16. Takeaways
+	Understanding file handling basics
+	Reading file content in multiple ways
+	Writing text and data to files
+	Managing file safely with "with"
+	Handling CSV data with the "csv" module
+	Using JSON for structured data exchange
+	Serializing objects using "pickle"
+	Difference between pickle and json
+	Creating persistance, shareable data solutions.
+	
+	(Next: Generic and Functional Programming in Python)
+
+*****Class Activity*****
+1. Create student.txt with 3 names.Read and print as "Student: <name>".
+	with open("student.txt","w") as f:
+    	f.write("Shila\nRam\nShyam")
+
+	with open("student.txt","r") as f:
+	    for line in f:
+	        print("Student:",line.strip())
+	#o/p:
+	#Student: Shila
+	#Student: Ram
+	#Student: Shyam
+
+2. Serialization
+Serialize {"id":1, "courses":["Math","Art"]} with pickle.
+Load it and print the courses.
+	#Serialization
+	d={"id":1, "courses":["Math","Art"]}
+	import pickle
+	with open("pickle-file.pkl","wb") as f:
+	    pickle.dump(d,f)
+	#Deserializing
+	with open("pickle-file.pkl","rb") as f:
+	    pobj = pickle.load(f)
+	    print(pobj["courses"])#o/p: ['Math', 'Art']
+
+

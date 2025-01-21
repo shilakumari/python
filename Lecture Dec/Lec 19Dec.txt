@@ -1,0 +1,121 @@
+1. Quick Recap: File handling & Serialization
+	Mastering basic file handling and serialization
+	Reading, writing files efficiently in various formats.
+	Working with structured data using CSV and JSON
+	Serializing data with JSON and Pickle, understanding their differences
+	Establishing persistent, sharable data solutions for long-term storage.
+
+	Ex 1:
+	import json
+	data='{"name":"John", "age":30}'
+	parsed=json.loads(data)
+	print(parsed["age"]#30
+
+	Ex 2:
+	with open("sample.txt","w") as f:
+		f.write("Hello World!\nWelcome to Python.")
+	with open("sample.txt","r") as f:
+		print(f.readline())#Hello World
+		
+2. What are Generics?
+	A way to indicate the type of data a structure or function can work with.
+	Use "typing" module to specify types like list[int], Dict[str, float].
+		Ex (list):
+		from typing import List
+		nums: List[int]=[1,2,3]
+		print(type(nums))#list
+		print(nums[0])#1
+		print(nums[1])#2
+		print(nums[2])#3
+		
+		import sys
+		print(sys.getsizeof(nums))#88
+		l1=[1,2,3]
+		print(sys.getsizeof(l1))#88
+
+		Ex (Dictionary):
+		from typing import Dict
+		myDict: Dict[str, int]={"a":1, "bc":2}
+		print(myDict["bc"])#2
+		
+3. Generics advantages
+	Cleaner code: 
+		You know what types are expected.
+	Better tool support:
+		Type checkers can spot errors easly.
+	Easier maintenance:
+		Future readers understand your intent quickly.
+	
+4. Generics Classes
+	Create classes that can work with any type.
+	Use "TypeVar" to define a placeholder type, then apply it to attributes.
+		Ex 1:
+		from typing import TypeVar, Generic
+		T=TypeVar('T')
+		class Box(Generic[T]):
+			def __init__(self, content:T):
+				self.content=content
+		b1=Box(10)
+		print(b1.content)
+		b1=Box([1,2,3])
+		print(b1.content)
+		b1=Box(["1","a","d"])
+		print(b1.content)	
+
+	Why did we use "TypeVar" and "Generic" in above example?
+		Ex: List[int]
+		if we don't sure about "int" or "float" then we use: T=TypeVar('T'),
+			otherwise, T=int
+		if we don't sure about generic type is List or not then we use: Generic[T],
+			otherwise, List[T] 
+
+5. Parallalizm possible using Generic
+	When we want everythhing to be structured then use "Generic".
+	If everything is structured then we can do parallelism in efficient way.
+	All this required for multithreading.
+	Ex:
+	If there is same type of data then we can divide in multiple parts (multiple thread).
+	Now, we can apply different functions (functional programming) like f1, f2.
+		f1 can apply for different thread,
+		after completion of f1, f2 will applied for different thread  
+	
+5. Generic Methods
+	Methods can also be generic.
+	Declare a function that accepts or returns a generic type.
+	Ex 1:
+		from typing import TypeVar
+		T=TypeVar('T')
+		def get_first(items:list[T])->T:
+		    return items[0]
+		l=[1,23,34]
+		print(get_first(l))
+
+
+6. Introduction to Functional Programming(FP)
+	Treat functions like data: pass them around and return them.
+	Aim for pure functions: Same input always gives same output.
+	Use built-in tools: map, filter, reduce.
+
+7. map and filter
+	map: Apply a function to each element.
+	filter: keep elements that match a condition.
+	Ex 1:
+		nums=[1,2,3]
+		doubled=list(map(lambda x:x*2,nums))#[2,4,6]
+		evens=list(filter(lambda x:x%2==0,nums))#[2]
+
+8. Takeaways
+	Generics
+		Add type clarity to data structures and methods.
+	FP Concepts
+		use map, filter and pure functions for cleaner code.
+	Lambdas
+		Small inline functions for quick transformations.
+
+(Next- Concurrency and Multithreading in Python)
+*****Class Activity*****
+1. Given [3,5,10], use map and a lambda to add 2 to each number.
+	nums=[3,5,10]
+	increase_nums=list(map(lambda x:x+2,nums))
+	print(increase_nums)#[5,7,12]
+	

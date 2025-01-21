@@ -1,0 +1,60 @@
+1. The Diamond Problem
+	class1 has two child(class2, class3)
+	class4 has two parent(class2, class3)
+	Ex: class Class1:
+		def m(self): print("In class1")
+	class Class2(Class1):
+		def m(self): print("In class2")
+	class Class3(Class1):
+		def m(self): print("In class3")
+	class Class4(Class2, Class4):
+		pass
+	obj=Class4()
+	obj.m()
+
+2. Duck Typing
+	Used in Dynamic programming languages like Python, Perl, Ruby, PHP, Javascript, etc.
+	Usefulness: The class of an object is less important than the method it defines.
+ 
+3. MRO	
+	Method Resolution Order(MRO) denotes the way a programming language resolves a method or attributes.
+	MRO defines the order in which the base classes are searched when executing the method.
+	The order is also called "Linearization" of a class, and the set of rules is called MRO. 
+	class Sparrow:
+	    def swim(self): print("The sparrow is swimming")
+	class Swan:
+	    def swim(self): print("The swan is swimming")
+	class Albatross(Swan,Sparrow): pass
+	birds=[Sparrow(),Swan(),Albatross()]
+	for bird in birds:
+	    bird.swim()
+	#It prints the lookup order
+	print(Albatross.__mro__)
+	#(<class '__main__.Albatross'>, <class '__main__.Swan'>, <class '__main__.Sparrow'>, <class 'object'>)
+	print(Albatross.mro())
+	#[<class '__main__.Albatross'>, <class '__main__.Swan'>, <class '__main__.Sparrow'>, <class 'object'>]
+
+4. Late Binding
+	Late binding is a method of binding variables values to function calls that occurs at the time the function called, not when it is defined.
+	That means the values of variables used in a function are looked up when the function is executed, 
+		which can lead to some intriguing behaviors.
+	Ex:
+	funcs=[]
+	for i in range(3):
+	   funcs.append(lambda:i)
+	for fun in funcs:
+	    print(fun(), end=" ")#2 2 2
+	Explaination:
+		when i=0, funcs=[lambda:i]
+		when i=1, funcs=[lambda:i,lambda:i]
+		when i=2, funcs=[lambda:i,lambda:i,lambda:i]
+		when function executing then i=2 substituted, hence o/p=2 2 2.
+
+5. Controlling The Late Binding 
+	funcs=[]
+	def create_lambda(x):
+	    return lambda:x
+	for i in range(3):
+	    funcs.append(create_lambda(i))
+	for fun in funcs:
+	    print(fun(), end=" ")#0 1 2

@@ -1,0 +1,8 @@
+1. Will the following code create an error?
+class Person:
+	def __init__(self,name):
+		name=name
+john = Person("John")
+print(john.name)#o/p:AttributeError
+
+2. 

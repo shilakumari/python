@@ -1,0 +1,376 @@
+1. Quick Recap: Generics and Functional Programming
+	Generics-
+		Add type clarity to data structures and methods
+	FP Concepts-
+		Use map,filter and pure functions for cleaner code.
+	Lambdas-
+		Small inline functions for quick transformations.
+	Ex 1:
+	numbers = [1,2,3,4,5]
+	squared =list(map(lambda x:x**2, numbers))
+	print(squared)#[1,4,9,16,25]
+	
+	Ex 2:
+	numbers=[10,15,20,25,30]
+	filtered=list(filter(lambda x:x%10==0,numbers))
+	print(filtered)#[10,20,30]
+
+	Ex 3:
+	numbers=[1,2,3,4,5]
+	result=list(map(lambda x:x**2, filter(lambda x:x%2!=0,numbers)))
+	print(result)#[1,9,25]
+
+2. Today Lecture Overview
+	Run multiple tasks smoothly (Concurrency and Threads)
+	Add randoomness to the program (Random Module - Generate random data)
+	Speed up number crunching (NumPy Basics - handle numerical computations)
+
+3. What is Concurrency?
+	Handling multiple tasks so the overlap in time.
+	Ex:
+		A busy coffee shop-orders are taken, coffee brewed, croissants heated, all happening simultaneously.
+	benifit:
+		Your program stays responsive even if one part takes a moment.
+ 
+4. Threads in Python
+	A thread is like a coworker in our program-multiple coworkers(Thread) can work together on different tasks.
+	Ex:
+		RAM(Random Access Memory) is faster than HD(Hard Disk), those data want frequently then put it on RAM.
+	Shared Space:
+		All thread shared the same memory, so coordination is key.
+	use case:
+		Let one thread process data while another waits for user input.
+
+5. GIL(Global Interpreter Lock)
+	A safety mechanism that ensures only one thread runs Python code at a time.
+	Result:
+		Threads help with waiting tasks (like downloading files) but aren't ideal for heavy CPU calculations.
+	Ex 1:
+	One microphone for a group- only one person can talk at a time.
+
+6. "threading" Module
+	Creating threads
+	Steps:
+		Write a function for a task.
+		Create a thread using "threading.Thread(target=function)".
+		Start it with start().
+		join() to end the thread.
+	Result:
+		Our program is now "multitask".
+	Ex 1:
+		import threading
+		def greet():
+			print("Hello from a thread!")
+		t=threading.Thread(target=greet)
+		t.start()
+		t.join()
+		#o/p: Hello from a thread!
+
+	Ex 2:
+	import threading
+	shared_counter=0
+	def increment1():
+	    global shared_counter
+	    for i in range(100):
+	        shared_counter += 1
+	
+	def increment2():
+	    global shared_counter
+	    for i in range(100):
+	        shared_counter += 1
+
+	t1=threading.Thread(target=increment1)
+	t2=threading.Thread(target=increment2)
+	t1.start()
+	t2.start()
+	t1.join()
+	t2.join()
+	print(shared_counter)#200
+
+7. Lock
+	Acqiure lock before access to the shared resource.
+	Those thread acquire lock, after completion release the lock.
+	After releasing the lock, other thread will get the lock and complete their work.  
+		lock=treading.Lock()
+		lock.acquire()
+		lock.release()
+	Ex 1:
+	import threading
+	shared_counter=0
+	lock=threading.Lock()
+	def increment1():
+	    global shared_counter
+	    for i in range(100):
+	        lock.acquire()
+	        shared_counter += 1
+	        lock.release()
+
+	def increment2():
+	    global shared_counter
+	    for i in range(100):
+	        lock.acquire()
+	        shared_counter += 1
+	        lock.release()
+
+	t1=threading.Thread(target=increment1)
+	t2=threading.Thread(target=increment2)
+	t1.start()
+	t2.start()
+	t1.join()
+	t2.join()
+	print("Incremented using lock ",shared_counter)
+
+8. ThreadPoolExecuter()
+	ThreadPoolExecuter() assigns multiple threads to the same task.
+	"import concurrent.futures" for ThreadPoolExecuter().
+	"import time" for time calculation.
+	Using ThreadPoolExecuter to execute things parallel.
+	Ex 1:
+	Calculate the square of a list of numbers
+		import concurrent.futures as cf
+		def cube(x):
+    			return x**3
+		numbers=[1,23,432,23]
+		
+		with cf.ThreadPoolExecutor() as executor:
+		    results = list(executor.map(cube, numbers))
+		print(results)#[1, 12167, 80621568, 12167]
+
+	Ex 2:
+	Calculate the elapsed time (execution time)
+		import time
+		#record start time
+		start_time = time.time()
+		numbers=[1,38789,5,68975,9189,187]
+		squares=[num**2 for num in numbers]
+		end_time=time.time()
+		elapsed_time=end_time-start_time
+		print(f"Elapsed time:{elapsed_time} seconds")#Elapsed time:0.0 seconds
+
+9. "time" module with ThreadPoolExecuter()
+	"import time" for time calculation.
+	Ex 1(without "maxworkers"):
+		import time
+		import concurrent.futures as cf
+	
+		def cube(x):return x**3
+		mylist = list(range(10000))
+
+		#record start time
+		start_time = time.time()
+
+		with cf.ThreadPoolExecutor() as tpe:
+		    results=list(tpe.map(cube, mylist))
+		#print(results)
+
+		#record end time
+		end_time=time.time()
+		elapsed_times = end_time-start_time
+		print(elapsed_times)#o/p: 0.3758871555328369
+
+	Ex 2(with "maxworkers"):
+	It took lesser time with "maxworker".
+		import time
+		import concurrent.futures as cf
+		def cube(x):return x**3
+		mylist = list(range(10000))
+
+		#record start time
+		start_time = time.time()
+
+		with cf.ThreadPoolExecutor(max_workers=2) as tpe:
+		    cubes=tpe.submit(cube,mylist)
+		#print(cubes)
+	
+		#record end time
+		end_time=time.time()
+		print(end_time-start_time)#o/p:0.01042485237121582
+
+10. "random" Module
+	Adding surprise to your programs.
+	It creates "random" numbers and choices.
+	uses:
+		Games, simulations, or just picking a funny lunch option.
+	Common Calles:
+		random.random()- float in [0,1]
+		random.randint(start_num, end_num) - generate in integer
+	Ex 1:
+		#Generate (0,1) in floating point
+		print(random.random())#0.5362157216836219
+		print(random.random())#0.5697679097680688
+		print(random.random())#0.9722979071835667
+		print(random.random())#0.9756082383020752
+		print(random.random())#0.6604259974165826
+	Ex 2:
+		import random
+		for i in range(10):
+		    print(random.randint(1,6), end=" ")#o/p:6 4 4 2 4 1 5 4 3 5 
+
+11. "random.seed()" in ramdom module
+	Used for same randomness everytime.
+	"random.seed(x)":
+		set a starting point for number generation.
+	Uses:
+		To reproduce the same "random" results- handing for testing.
+	Imagine:
+		Pressing "repeat" on your shuffle playlist.
+	Ex:
+		import random
+		random.seed(20)
+		for i in range(10):
+		    print(random.randint(1,6), end=" ")#o/p:6 6 2 3 6 6 1 3 5 2 
+		print()
+
+		random.seed(20)
+		for i in range(10):
+		    print(random.randint(1,6), end=" ")#o/p:6 6 2 3 6 6 1 3 5 2 
+		print()
+
+12. NumPy
+	Fast & furious number crunching
+	NumPy:
+		A library for speedy numerical operations.
+	Why?
+		Faster than lists and perfect for math-heavy tasks.
+	Imagine:
+	Upgrading from a bicycle(list) to a sports car (NumPy array).
+
+13. Creating NumPy Arrays
+	import numpy as np
+	np.array([1,2,3]) # creats a numpy array
+
+	np.zeros((2,2)) # creates 2D matrix with zeros[[0,0],[0,0]]
+	np.arange(5) #[0,1,2,3,4]
+	Ex 1:
+		import numpy as np
+		arr = np.array([1,2,3]) # creats a numpy array
+		print(arr)#[1 2 3]
+	Ex 1:
+		import numpy as mp
+		l1 = list(np.arange(1,5.5,0.5))
+		print(l1)#[1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0]
+
+14. Basic Array Operation
+	Arrays let you do math on all elements at once.
+	arr*2 double each element.
+	Result:
+ 		Cleaner, faster code- no loops needed
+
+15. Indexing and Slicing
+	arr[0]- First element
+	For 2D:
+		arr[1,2]- row 1, column 2
+	Slices:
+		arr[0:3]- first three elements
+
+	Get exactly the data you want quickly.
+
+16. No Manual Reshaping Needed
+	NumPy attempts to match array shapes for operations.
+	Ex:
+	arr+10 add 10 to every element, no matter the array size.
+	Less fuss, more result.
+	Ex 1:
+		a=numpy.ones((3,3))
+		print(a)#array([[1.,1.,1.],[1.,1.,1.],[1.,1.,1.]])
+	Ex 2:
+		b=a+[3,4,5]
+		print(b)#array([[4.,5.,6.],[4.,5.,6.],[4.,5.,6.]])
+	Ex 3:
+		arr=numpy.ones((3,3),dtype=numpy.int32)
+		print(arr)#array([[1,1,1],[1,1,1],[1,1,1]])
+		b1=arr+[3,4,5]
+		print(b1)#array([[4,5,6],[4,5,6],[4,5,6]])
+
+17. Statistical Functions
+	np.sum(arr), np.mean(arr), np.max(arr) etc.
+	Instantly learn about your data- like finding the average test score from thousands of students.
+	Ex 1:
+		arr=numpy.ones((2,2),dtype=numpy.int32)
+		b=arr+[3,4]
+		print(b)#[[4,5],[4,5]]
+		print(numpy.max(b))#5
+		print(numpy.max(b, axis=0))#array([4,5])- search column-wise
+		print(numpy.max(b, axis=1))#array([5,5])- search row-wise
+		
+18. "matplotlib.pyplot"
+	Ex 1:
+	import numpy as np
+	import matplotlib.pyplot as plt
+	x=np.arange(-100,100,0.1)
+	y=x**2
+	print(plt.plot(x,y))#output in a graph form: range of x values, corresponding to y values
+	print(plt.show())	
+	Ex 2:
+	x=np.arange(0,100,0.5)
+	print(plt.plot(x, x**3))#range of x values, corresponding to y values
+	Ex 3:
+	x=np.arange(0,100,0.5)
+	print(plt.plot(x, x**4))#range of x values, corresponding to y values
+	print(plt.xlabel("value of x"))#Text(0.5, 0, "value of x")
+	print(plt.ylabel("value of y"))#Text(0, 0.5, "value of y")
+	print(plt.title("Y vs X"))#Text(0.5, 1.0, "Y vs X")
+	print(plt.legend())
+	print(plt.legend("x**4"))
+	plt.show()
+	plt.close()
+	
+	Ex 4:
+	untitled0.py
+		import matplotlib.pyplot as plt
+		import numpy as np
+		x=np.arange(-100, 100, 0.1)
+		plt.plot(x, x**2)
+		plt.xlabel("x")
+		plt.ylabel("y")
+		plt.titple("y vs x")
+		plt.legend("y values")	
+		plt.show()
+	On console:
+		runfile("untitled0.py", wdir="C:\User")
+		runfile("untitled0.py", wdir="C:\User")
+		runfile("untitled0.py", wdir="C:\User")
+		runfile("untitled0.py", wdir="C:\User")
+
+19. Takeaways
+	Concurrency:
+	Making programs handle multiple task smoothly.
+	Threads:
+	Great for I/O-bound tasks.
+	Locks:
+	Kep shared resources tidy.
+	random:
+	Spice up your program with unpredictability.
+	seed():
+	control when you wnat predictable outcomes.
+	Perfect for simulations, testing, and creative features.
+
+
+	
+*****Class Activity*****
+1. Safer Counter
+	Task:
+	Two threads increment a shared counter 1000 times each.
+	Goal:
+	Final value=2000, no missed increments.
+	Try:
+	Add a lock around the increment code.
+	
+2. Task:
+	Generate an 8-character password from letters and digits.
+	Tip:
+	Use random.choice() on a string to allowed characters.
+	Ex:
+		import random
+		letNum="abcdefghijklmnopqrstuvwxyz0123456789"
+		seq=""
+		for i in range(8):
+		    seq +=random.choice(letNum)
+		print(seq)#11wn3tty
+3. Create a 3x3 zero array.
+	set the center element to 1.
+	Check result:
+		the "target" is now right in the center.
+
+
+

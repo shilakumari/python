@@ -1,0 +1,189 @@
+Inheritance and Method Overriding in Python
+1.Quick Overview
+l1d=[1]*3
+print(l1d)#[1, 1, 1]
+l2d=[[1]*3]*3
+print(l2d)#[[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+l2d[0][1]=0
+print(l2d)#[[1, 0, 1], [1, 0, 1], [1, 0, 1]]
+
+l=[1,2]
+l.append(l)
+print(l)#[1, 2, [...]], every l has l inside it
+print(len(l))#3
+print(l[2])#[1, 2, [...]]
+print(l[2][2])#[1, 2, [...]]
+
+#set
+s={1,2,3,4,5}
+s.add((6,7))
+print(s)#{1, 2, 3, 4, 5, (6, 7)}
+
+#tuple
+t=(1,2,3,[4,5])
+#t[0].append(6)#AttributeError
+print(t)
+
+t[3].append(4)#No error, because at index 3 is list, so append in list allowed.
+print(t)#(1, 2, 3, [4, 5, 4])
+
+2. Inheritance
+	Inheritance allows a new class(child) to recive attributes and methods from an existing class(parent).
+	Purpose:
+		Code reuseability
+		Establish a logical hierarchy among classes.
+
+	Blueprints and Houses:
+	Class(Parent): Blueprint of a house
+	Object(Child): Actual house built using the blueprint.
+
+3. Implementing Inheritance
+	Syntax:
+	class Parent:
+		#parent class code
+	class Child(Parent):
+		#child class code
+
+	Ex 1:
+	class Animal:
+    		def eat(self):print("Eating...")
+	class Dog(Animal): pass
+	d1=Dog()
+	d1.eat()#Eating...
+
+4. Single Inheritance
+	Ex 1:
+	class Vehicle:
+    		def move(self): print("Moving...")
+	class Car(Vehicle):
+		def drive(self): print("Driving a car.")
+	car1=Car()
+	car1.move()#Moving...
+	car1.drive()#Driving a car.
+
+	Ex 2:
+	class A:
+		def __init__(self):#default instance method called constructor
+			self.color="Green"
+	class B(A):
+		def paint(self):
+			print("Let's start the painting")
+	b=B()
+	#Default constructor of B overriden by cnstructor of A
+	print(b.color)#Green
+	b.paint()#Let's start the painting
+
+5. Multiple Inheritance
+	A child class inherits from a multiple parent classes.
+	Syntax:
+	class ChildClass(ParentClass1,ParentClass2):
+		#Child class code
+	Ex 1:
+		class Flyer:
+			def __init__(self):self.wings=True
+	    		def fly(self): print("Flying...")
+		class Swimmer:
+			def __init__(self):self.fins=True
+	    		def swim(self): print("Swimming...")
+		class Duck(Flyer,Swimmer): pass
+		daffy=Duck()
+		daffy.fly()#Flying...
+		daffy.swim()#Swimming...
+		print(daffy.wings)#True
+		print(daffy.fins)#AttributeError: 'Duck' object has no attribute 'fins'.
+
+	Ex 2:
+	class Flyer:
+		def __init__(self):self.wings=True
+	class Swimmer:
+		def __init__(self):self.fins=True
+	class Duck(Flyer,Swimmer):
+		def __init__(self):self.flaot=True
+	d=Duck()
+	print(d.flaot)#True
+	print(daffy.wings)#AttributeError: 'Duck' object has no attribute 'fins'.
+	print(daffy.fins)#AttributeError: 'Duck' object has no attribute 'fins'.
+
+6. Multilevel Inheritance
+	A class(grandchild) inherits from a child class, forming a chain.
+	Ex 1:
+	class Organism:
+	    	def live(self): print("Living...")
+	class Animal(Organism): pass
+	class Bird(Animal):
+    		def fly(self): print("Flying...")
+	sparrow=Bird()
+	sparrow.live()#Living...
+	sparrow.fly()#Flying...
+	
+7. Hierarchical Inheritance
+	Multiple child classes inherit from the same parent class.
+	class Shape:
+    		def draw(self): print("Drawing shape...")
+	class Circle(Shape):pass
+	class Square(Shape):pass
+	c=Circle()
+	s=Square()
+	c.draw()#Drawing shape...
+	s.draw()#Drawing shape...
+
+
+8. Method Overriding Basics
+	When a child class provides a specific implementation of a method that is already defined in its parent class.
+	Ex 1:
+	class Animal:
+    		def speak(self):print("Animal makes a sound.")
+	class Cat(Animal):
+		def speak(self):print("Cat meows.")
+	whiskers=Cat()
+	whiskers.speak()#Cat meows.
+	Cat overrides the speak() from Animal.
+	The Cat class provides its own implementation.
+	
+	Ex 2:
+	class P:
+		value=10
+		def __init__(self): self.value=20
+	class C(P):
+		value=30
+	p=P()
+	c=C()
+	print(p.value, c.value,P.value,C.value)#20 20 10 30
+		
+
+9. The super() function
+	A built-in function that allow you to call methods from the parent class.
+	Ex 1:
+	class Logger:
+	    def log(self,message):
+	        print(f"Log:{message}")
+	class AdvanceLogger(Logger):
+	    def log(self,message):
+	        super().log(message)
+	        print(f"Advance Log:{message}")
+	logger=AdvanceLogger()
+	logger.log("System error")
+	#output:
+	#Log:System error
+	#Advance Log:System error	
+
+	Benefits of super():
+		Simplifies the code.
+		Ensures parent class initialization.
+		Makes code maintenance easier.
+	Best Practice:
+		Always use super().__init__() when overriding __init__.
+
+10. Summary (Takeaways)
+	Inheritance:
+		Enable code reusability
+		Establishes relationships between classes.
+	Types of Inheritance:
+		Single
+		Multiple
+		Multilevel
+		Hierarchical
+	Method overriding:
+		Customize parent methods in child classes.
+	super() keyword:
+		Call and extend parent class methods.
